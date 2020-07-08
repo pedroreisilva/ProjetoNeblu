@@ -1,0 +1,61 @@
+﻿@model GestaoArtigos.Models.tb_artigos
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h3>Tem a certeza que deseja eliminar o pedido ?</h3>
+<div class="form-horizontal">
+
+    <div class="form-group">
+        <label class="control-label col-sm-2">ID</label>
+        <div class="col-md-10">
+            @Html.DisplayFor(model => model.codigo)
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-sm-2">Referência</label>
+        <div class="col-md-10">
+            @Html.DisplayFor(model => model.referencia)
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-sm-2">Descrição</label>
+        <div class="col-md-10">
+            @Html.DisplayFor(model => model.descricao)
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-sm-2">Data de criação</label>
+        <div class="col-md-10">
+            @Html.DisplayFor(model => model.data_criado)
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-sm-2">Última alteração</label>
+        <div class="col-md-10">
+            @Html.DisplayFor(model => model.data_alterado)
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-sm-2">Nº do utilizador</label>
+        <div class="col-md-10">
+            @Html.DisplayFor(model => model.codigo_utilizador)
+        </div>
+    </div>
+
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-warning" /> |
+            <a class="btn btn-primary" href="/Artigo/">Voltar à lista</a>
+        </div>
+    }
+</div>
