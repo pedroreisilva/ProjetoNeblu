@@ -7,7 +7,12 @@
 
 <p>
     <a class="btn btn-success" href="/Artigo/Create">Adicionar Novo</a>
-
+    <div class="form-group">
+        <div class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
+            <input type="text" id="Search" placeholder="Search" class="form-control" />
+        </div>
+    </div>
 </p>
 <table class="table">
     <tr>
@@ -33,7 +38,7 @@
     </tr>
 
 @foreach (var item in Model) {
-    <tr>
+    <tr class="Search">
         <td>
             @Html.DisplayFor(modelItem => item.codigo)
         </td>
@@ -61,3 +66,25 @@
 }
 
 </table>
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        function Contains(text_one, text_two) {
+            if (text_one.indexOf(text_two) != -1)
+                return true;
+        }
+        $("#Search").keyup(function () {
+            var searchText = $("#Search").val().toLowerCase();
+            $(".Search").each(function () {
+                if (!Contains($(this).text().toLowerCase(), searchText)) {
+                    $(this).hide();
+                } else {
+                    $(this).show();
+                }
+
+            });
+        });
+    });
+
+</script>
