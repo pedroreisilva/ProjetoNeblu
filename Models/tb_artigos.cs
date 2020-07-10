@@ -11,18 +11,14 @@ namespace GestaoArtigos.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class tb_artigos
     {
-        [Required]
         public int codigo { get; set; }
-        [Required(ErrorMessage = "Introduza uma referência válida! (alfanumérico)")]
         public string referencia { get; set; }
         public string descricao { get; set; }
         public System.DateTime data_criado { get; set; }
         public System.DateTime data_alterado { get; set; }
-        [Required(ErrorMessage = "Introduza o seu número de utilizador!")]
         public int codigo_utilizador { get; set; }
     }
 }
