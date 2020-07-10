@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="MvcCrudModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.5" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="MvcCrudModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.5" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="tb_artigos">
           <Key>
             <PropertyRef Name="codigo" />
@@ -16,11 +16,23 @@
           <Property Name="data_alterado" Type="datetime" Precision="0" Nullable="false" />
           <Property Name="codigo_utilizador" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="tb_necessidades">
+          <Key>
+            <PropertyRef Name="codigo" />
+          </Key>
+          <Property Name="codigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="codigo_artigo" Type="int" Nullable="false" />
+          <Property Name="quantidade_atual" Type="double" Nullable="false" />
+          <Property Name="estado" Type="enum" Nullable="false" />
+          <Property Name="data_criado" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="data_alterado" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="codigo_utilizador" Type="int" Nullable="false" />
+        </EntityType>
         <EntityContainer Name="MvcCrudModelStoreContainer">
           <EntitySet Name="tb_artigos" EntityType="Self.tb_artigos" Schema="bd_neblu" store:Type="Tables" />
+          <EntitySet Name="tb_necessidades" EntityType="Self.tb_necessidades" Schema="bd_neblu" store:Type="Tables" />
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="MvcCrudModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -37,7 +49,20 @@
         </EntityType>
         <EntityContainer Name="DbModels" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="tb_artigos" EntityType="Self.tb_artigos" />
+          <EntitySet Name="tb_necessidades" EntityType="MvcCrudModel.tb_necessidades" />
         </EntityContainer>
+        <EntityType Name="tb_necessidades">
+          <Key>
+            <PropertyRef Name="codigo" />
+          </Key>
+          <Property Name="codigo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="codigo_artigo" Type="Int32" Nullable="false" />
+          <Property Name="quantidade_atual" Type="Double" Nullable="false" />
+          <Property Name="estado" Type="String" Nullable="false" MaxLength="65532" FixedLength="false" Unicode="false" />
+          <Property Name="data_criado" Type="DateTime" Nullable="false" />
+          <Property Name="data_alterado" Type="DateTime" Nullable="false" />
+          <Property Name="codigo_utilizador" Type="Int32" Nullable="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -53,6 +78,19 @@
                 <ScalarProperty Name="data_criado" ColumnName="data_criado" />
                 <ScalarProperty Name="data_alterado" ColumnName="data_alterado" />
                 <ScalarProperty Name="codigo_utilizador" ColumnName="codigo_utilizador" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_necessidades">
+            <EntityTypeMapping TypeName="MvcCrudModel.tb_necessidades">
+              <MappingFragment StoreEntitySet="tb_necessidades">
+                <ScalarProperty Name="codigo_utilizador" ColumnName="codigo_utilizador" />
+                <ScalarProperty Name="data_alterado" ColumnName="data_alterado" />
+                <ScalarProperty Name="data_criado" ColumnName="data_criado" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="quantidade_atual" ColumnName="quantidade_atual" />
+                <ScalarProperty Name="codigo_artigo" ColumnName="codigo_artigo" />
+                <ScalarProperty Name="codigo" ColumnName="codigo" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
