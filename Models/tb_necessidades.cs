@@ -11,7 +11,8 @@ namespace GestaoArtigos.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations.Schema;
+
     public partial class tb_necessidades
     {
         public int codigo { get; set; }
@@ -22,4 +23,12 @@ namespace GestaoArtigos.Models
         public System.DateTime data_alterado { get; set; }
         public int codigo_utilizador { get; set; }
     }
+
 }
+    public enum Estado
+    {
+        Novo,
+        Pendente,
+        Concluido
+    }
+

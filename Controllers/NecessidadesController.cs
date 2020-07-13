@@ -20,7 +20,7 @@ namespace GestaoArtigos.Controllers
             return View(db.tb_necessidades.ToList());
         }
 
-        // GET: Necessidades/Details/5
+        // GET: Necessidades/Details/5System.InvalidOperationException: 'The entity type tb_necessidades is not part of the model for the current context.'
         public ActionResult Details(int? id)
         {
             if (id == null)
