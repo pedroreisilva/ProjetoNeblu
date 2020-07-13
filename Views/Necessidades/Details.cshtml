@@ -4,63 +4,55 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<div class="form-horizontal">
 
-<div>
-    <h4>tb_necessidades</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.codigo_artigo)
-        </dt>
-
-        <dd>
+    <div class="form-group">
+        <label class="control-label col-sm-2"><b>ID do Artigo</b></label>
+        <div class="col-md-10">
             @Html.DisplayFor(model => model.codigo_artigo)
-        </dd>
+        </div>
+    </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.quantidade_atual)
-        </dt>
-
-        <dd>
+    <div class="form-group">
+        <label class="control-label col-sm-2"><b>Quantidade Atual</b></label>
+        <div class="col-md-10">
             @Html.DisplayFor(model => model.quantidade_atual)
-        </dd>
+        </div>
+    </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.estado)
-        </dt>
-
-        <dd>
+    <div class="form-group">
+        <label class="control-label col-sm-2"><b>Estado</b></label>
+        <div class="col-md-10">
             @Html.DisplayFor(model => model.estado)
-        </dd>
+        </div>
+    </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.data_criado)
-        </dt>
-
-        <dd>
+    <div class="form-group">
+        <label class="control-label col-sm-2"><b>Data de criação</b></label>
+        <div class="col-md-10">
             @Html.DisplayFor(model => model.data_criado)
-        </dd>
+        </div>
+    </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.data_alterado)
-        </dt>
-
-        <dd>
+    <div class="form-group">
+        <label class="control-label col-sm-2"><b>Última Alteração</b></label>
+        <div class="col-md-10">
             @Html.DisplayFor(model => model.data_alterado)
-        </dd>
+        </div>
+    </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.codigo_utilizador)
-        </dt>
-
-        <dd>
+    <div class="form-group">
+        <label class="control-label col-sm-2"><b>Nº do utilizador</b></label>
+        <div class="col-md-10">
             @Html.DisplayFor(model => model.codigo_utilizador)
-        </dd>
+        </div>
+    </div>
 
-    </dl>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            @Html.ActionLink("Editar", "Edit", new { id = Model.codigo }, new { @class = "btn btn-warning" }) |
+            <a class="btn btn-primary" href="/Necessidades/">Voltar à lista</a>
+        </div>
+    </div>
+
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.codigo }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

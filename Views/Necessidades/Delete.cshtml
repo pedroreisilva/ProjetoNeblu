@@ -4,69 +4,59 @@
     ViewBag.Title = "Delete";
 }
 
-<h2>Delete</h2>
+<h4>Tem a certeza que deseja eliminar o pedido ?</h4>
 
-<h3>Are you sure you want to delete this?</h3>
-<div>
-    <h4>tb_necessidades</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.codigo_artigo)
-        </dt>
+<div class="form-horizontal">
 
-        <dd>
+    <div class="form-group">
+        <label class="control-label col-sm-2"><b>ID do Artigo</b></label>
+        <div class="col-md-10">
             @Html.DisplayFor(model => model.codigo_artigo)
-        </dd>
+        </div>
+    </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.quantidade_atual)
-        </dt>
-
-        <dd>
+    <div class="form-group">
+        <label class="control-label col-sm-2"><b>Quantidade Atual</b></label>
+        <div class="col-md-10">
             @Html.DisplayFor(model => model.quantidade_atual)
-        </dd>
+        </div>
+    </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.estado)
-        </dt>
-
-        <dd>
+    <div class="form-group">
+        <label class="control-label col-sm-2"><b>Estado</b></label>
+        <div class="col-md-10">
             @Html.DisplayFor(model => model.estado)
-        </dd>
+        </div>
+    </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.data_criado)
-        </dt>
-
-        <dd>
+    <div class="form-group">
+        <label class="control-label col-sm-2"><b>Data de criação</b></label>
+        <div class="col-md-10">
             @Html.DisplayFor(model => model.data_criado)
-        </dd>
+        </div>
+    </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.data_alterado)
-        </dt>
-
-        <dd>
+    <div class="form-group">
+        <label class="control-label col-sm-2"><b>Última Alteração</b></label>
+        <div class="col-md-10">
             @Html.DisplayFor(model => model.data_alterado)
-        </dd>
+        </div>
+    </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.codigo_utilizador)
-        </dt>
-
-        <dd>
+    <div class="form-group">
+        <label class="control-label col-sm-2"><b>Nº do utilizador</b></label>
+        <div class="col-md-10">
             @Html.DisplayFor(model => model.codigo_utilizador)
-        </dd>
+        </div>
+    </div>
 
-    </dl>
-
-    @using (Html.BeginForm()) {
+    @using (Html.BeginForm())
+    {
         @Html.AntiForgeryToken()
 
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
-        </div>
+    <div class="form-actions no-color">
+        <input type="submit" value="Delete" class="btn btn-warning" /> |
+        <a class="btn btn-primary" href="/Necessidades/">Voltar à lista</a>
+    </div>
     }
 </div>

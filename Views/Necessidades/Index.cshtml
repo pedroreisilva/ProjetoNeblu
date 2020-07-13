@@ -3,61 +3,89 @@
 @{
     ViewBag.Title = "Index";
 }
-
-<h2>Index</h2>
-
 <p>
-    @Html.ActionLink("Create New", "Create")
+    <a class="btn btn-success" href="/Necessidades/Create">Adicionar Novo</a>
+    <div class="form-group">
+        <div class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
+            <input type="text" id="Search" placeholder="Search" class="form-control" />
+        </div>
+    </div>
 </p>
+
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.codigo_artigo)
+            ID do Artigo
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.quantidade_atual)
+            Stock Atual
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.estado)
+            Estado
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.data_criado)
+            Data de Criação
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.data_alterado)
+            Última Alteração
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.codigo_utilizador)
+            Nº do utilizador
         </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.codigo_artigo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.quantidade_atual)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.estado)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.data_criado)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.data_alterado)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.codigo_utilizador)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.codigo }) |
-            @Html.ActionLink("Details", "Details", new { id=item.codigo }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.codigo })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.codigo_artigo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.quantidade_atual)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.estado)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.data_criado)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.data_alterado)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.codigo_utilizador)
+            </td>
+            <td>
+                @Html.ActionLink("Editar", "Edit", new { id = item.codigo }, new { @class = "btn btn-warning" }) |
+                @Html.ActionLink("Detalhes", "Details", new { id = item.codigo }, new { @class = "btn btn-info" }) |
+                @Html.ActionLink("Eliminar", "Delete", new { id = item.codigo }, new { @class = "btn btn-danger" })
+            </td>
+        </tr>
+    }
 
 </table>
+
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        function Contains(text_one, text_two) {
+            if (text_one.indexOf(text_two) != -1)
+                return true;
+        }
+        $("#Search").keyup(function () {
+            var searchText = $("#Search").val().toLowerCase();
+            $(".Search").each(function () {
+                if (!Contains($(this).text().toLowerCase(), searchText)) {
+                    $(this).hide();
+                } else {
+                    $(this).show();
+                }
+
+            });
+        });
+    });
+
+</script>
