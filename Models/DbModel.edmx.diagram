@@ -6,7 +6,7 @@
     <edmx:Diagrams>
       <Diagram DiagramId="fb9b0871df934f95a5b5cde98dbdd1eb" Name="Diagram1">
         <EntityTypeShape EntityType="MvcCrudModel.tb_artigos" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="MvcCrudModel.tb_necessidades" Width="1.5" PointX="3.375" PointY="0.75" />
+        <EntityTypeShape EntityType="MvcCrudModel.tb_necessidades" Width="1.5" PointX="3.25" PointY="0.625" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
