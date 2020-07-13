@@ -14,7 +14,7 @@ namespace GestaoArtigos.Controllers
     {
         private DbModels db = new DbModels();
 
-        // GET: Necessidades
+        // GET: Necessidades/Index
         public ActionResult Index()
         {
             return View(db.tb_necessidades.ToList());
