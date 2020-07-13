@@ -1,0 +1,66 @@
+﻿@model GestaoArtigos.Models.tb_necessidades
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>tb_necessidades</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.codigo_artigo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.codigo_artigo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.quantidade_atual)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.quantidade_atual)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.estado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.estado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.data_criado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.data_criado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.data_alterado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.data_alterado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.codigo_utilizador)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.codigo_utilizador)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.codigo }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

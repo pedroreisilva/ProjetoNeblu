@@ -1,0 +1,63 @@
+﻿@model IEnumerable<GestaoArtigos.Models.tb_necessidades>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.codigo_artigo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.quantidade_atual)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.estado)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.data_criado)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.data_alterado)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.codigo_utilizador)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.codigo_artigo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.quantidade_atual)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.estado)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.data_criado)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.data_alterado)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.codigo_utilizador)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.codigo }) |
+            @Html.ActionLink("Details", "Details", new { id=item.codigo }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.codigo })
+        </td>
+    </tr>
+}
+
+</table>
