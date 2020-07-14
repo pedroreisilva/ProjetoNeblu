@@ -32,6 +32,7 @@
             @Html.ValidationMessageFor(model => model.descricao, "", new { @class = "text-danger" })
         </div>
     </div>
+    @Html.HiddenFor(m => m.data_criado)
 
     <div class="form-group">
         <label class="control-label col-sm-2">Nº de utilizador</label>
