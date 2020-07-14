@@ -11,16 +11,24 @@ namespace GestaoArtigos.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
 
     public partial class tb_necessidades
     {
+        [Required]
         public int codigo { get; set; }
+        [Required(ErrorMessage = "Insira o número do artigo!")]
         public int codigo_artigo { get; set; }
+        [Required(ErrorMessage = "Insira qual a quantidade em stock!")]
         public double quantidade_atual { get; set; }
+        [Required(ErrorMessage = "Insira o estado do artigo!")]
         public string estado { get; set; }
+        [Required]
         public System.DateTime data_criado { get; set; }
+        [Required]
         public System.DateTime data_alterado { get; set; }
+        [Required(ErrorMessage = "Insira o seu número de utilizador!")]
         public int codigo_utilizador { get; set; }
     }
 
