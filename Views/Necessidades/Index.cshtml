@@ -3,69 +3,69 @@
 @{
     ViewBag.Title = "Index";
 }
-<p>
-    <a class="btn btn-success" href="/Necessidades/Create">Adicionar Novo</a>
-    <div class="form-group">
-        <div class="input-group">
-            <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
-            <input type="text" id="Search" placeholder="Search" class="form-control" />
+    <p>
+        <a class="btn btn-success" href="/Artigo/Create">Adicionar Novo</a>
+        <div class="form-group">
+            <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
+                <input type="text" id="Search" placeholder="Search" class="form-control" />
+            </div>
         </div>
-    </div>
-</p>
+    </p>
 
-<table class="table">
-    <tr>
-        <th>
-            ID do Artigo
-        </th>
-        <th>
-            Stock Atual
-        </th>
-        <th>
-            Estado
-        </th>
-        <th>
-            Data de Criação
-        </th>
-        <th>
-            Última Alteração
-        </th>
-        <th>
-            Nº do utilizador
-        </th>
-        <th></th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
+    <table class="table">
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.codigo_artigo)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.quantidade_atual)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.estado)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.data_criado)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.data_alterado)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.codigo_utilizador)
-            </td>
-            <td>
-                @Html.ActionLink("Editar", "Edit", new { id = item.codigo }, new { @class = "btn btn-warning" }) |
-                @Html.ActionLink("Detalhes", "Details", new { id = item.codigo }, new { @class = "btn btn-info" }) |
-                @Html.ActionLink("Eliminar", "Delete", new { id = item.codigo }, new { @class = "btn btn-danger" })
-            </td>
+            <th>
+                ID do Artigo
+            </th>
+            <th>
+                Stock Atual
+            </th>
+            <th>
+                Estado
+            </th>
+            <th>
+                Data de Criação
+            </th>
+            <th>
+                Última Alteração
+            </th>
+            <th>
+                Nº do utilizador
+            </th>
+            <th></th>
         </tr>
-    }
 
-</table>
+        @foreach (var item in Model)
+        {
+            <tr class ="Search">
+                <td>
+                    @Html.DisplayFor(modelItem => item.codigo_artigo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.quantidade_atual)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.estado)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.data_criado)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.data_alterado)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.codigo_utilizador)
+                </td>
+                <td>
+                    @Html.ActionLink("Editar", "Edit", new { id = item.codigo }, new { @class = "btn btn-warning" }) |
+                    @Html.ActionLink("Detalhes", "Details", new { id = item.codigo }, new { @class = "btn btn-info" }) |
+                    @Html.ActionLink("Eliminar", "Delete", new { id = item.codigo }, new { @class = "btn btn-danger" })
+                </td>
+                </tr>
+            }
+
+    </table>
 
 <script src="~/Scripts/jquery-3.4.1.min.js"></script>
 
