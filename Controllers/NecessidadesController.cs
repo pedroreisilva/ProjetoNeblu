@@ -50,6 +50,8 @@ namespace GestaoArtigos.Controllers
         {
             if (ModelState.IsValid)
             {
+                tb_necessidades.data_criado = DateTime.Now;
+                tb_necessidades.data_alterado = DateTime.Now;
                 db.tb_necessidades.Add(tb_necessidades);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -82,6 +84,8 @@ namespace GestaoArtigos.Controllers
         {
             if (ModelState.IsValid)
             {
+
+                tb_necessidades.data_alterado = DateTime.Now;
                 db.Entry(tb_necessidades).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");

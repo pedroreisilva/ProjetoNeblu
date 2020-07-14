@@ -21,9 +21,9 @@ namespace GestaoArtigos.Models
         public string referencia { get; set; }
         public string descricao { get; set; }
         [Required]
-        public System.DateTime data_criado { get; set; }
+        public DateTime data_criado { get; set; }
         [Required]
-        public System.DateTime data_alterado { get; set; }
+        public DateTime data_alterado { get; set; }
         [Required(ErrorMessage = "Insira o seu número de utilizador!")]
         public int codigo_utilizador { get; set; }
     }

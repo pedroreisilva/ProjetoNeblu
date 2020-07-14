@@ -34,32 +34,33 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr class="Search">
-        <td>
-            @Html.DisplayFor(modelItem => item.referencia)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.descricao)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.data_criado)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.data_alterado)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.codigo_utilizador)
-        </td>
-        <td>
-            @Html.ActionLink("Editar", "Edit", new { id = item.codigo }, new { @class = "btn btn-warning" }) |
-            @Html.ActionLink("Detalhes", "Details", new { id = item.codigo }, new { @class = "btn btn-info" }) |
-            @Html.ActionLink("Eliminar", "Delete", new { id = item.codigo }, new { @class = "btn btn-danger" })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model) {
+        <tr class="Search">
+            <td>
+                @Html.DisplayFor(modelItem => item.referencia)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.descricao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.data_criado)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.data_alterado)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.codigo_utilizador)
+            </td>
+            <td>
+                @Html.ActionLink("Editar", "Edit", new { id = item.codigo }, new { @class = "btn btn-warning" }) |
+                @Html.ActionLink("Detalhes", "Details", new { id = item.codigo }, new { @class = "btn btn-info" }) |
+                @Html.ActionLink("Eliminar", "Delete", new { id = item.codigo }, new { @class = "btn btn-danger" })
+            </td>
+        </tr>
+    }
 
 </table>
+
 <script src="~/Scripts/jquery-3.4.1.min.js"></script>
 
 <script>

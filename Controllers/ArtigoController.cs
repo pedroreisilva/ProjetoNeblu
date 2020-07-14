@@ -36,13 +36,15 @@ namespace GestaoArtigos.Controllers
 
         // POST: Artigo/Create
         [HttpPost]
-        public ActionResult Create(tb_artigos artigo)
+        public ActionResult Create(tb_artigos artigoModel)
         {
             try
             {
                 using (DbModels dbModel = new DbModels())
                 {
-                    dbModel.tb_artigos.Add(artigo);
+                    artigoModel.data_criado = DateTime.Now;
+                    artigoModel.data_alterado = DateTime.Now;
+                    dbModel.tb_artigos.Add(artigoModel);
                     dbModel.SaveChanges();
                 }
 
@@ -71,6 +73,7 @@ namespace GestaoArtigos.Controllers
         {
             using (DbModels dbModel = new DbModels())
             {
+                artigoModel.data_alterado = DateTime.Now;
                 dbModel.Entry(artigoModel).State = EntityState.Modified;
                 dbModel.SaveChanges();
             }
