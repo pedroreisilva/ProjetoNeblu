@@ -12,27 +12,22 @@ namespace GestaoArtigos.Controllers
 {
     public class NecessidadesController : Controller
     {
-        private DbModels db = new DbModels();
-
         // GET: Necessidades/Index
         public ActionResult Index()
         {
-            return View(db.tb_necessidades.ToList());
+            using (DbModels dbModel = new DbModels())
+            {
+                return View(dbModel.tb_necessidades.ToList());
+            }
         }
 
         // GET: Necessidades/Details/5System.InvalidOperationException: 'The entity type tb_necessidades is not part of the model for the current context.'
-        public ActionResult Details(int? id)
+        public ActionResult Details(int id)
         {
-            if (id == null)
+            using (DbModels dbModel = new DbModels())
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                return View(dbModel.tb_necessidades.Where(x => x.codigo == id).FirstOrDefault());
             }
-            tb_necessidades tb_necessidades = db.tb_necessidades.Find(id);
-            if (tb_necessidades == null)
-            {
-                return HttpNotFound();
-            }
-            return View(tb_necessidades);
         }
 
         // GET: Necessidades/Create
@@ -45,87 +40,83 @@ namespace GestaoArtigos.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "codigo,codigo_artigo,quantidade_atual,estado,data_criado,data_alterado,codigo_utilizador")] tb_necessidades tb_necessidades)
+        public ActionResult Create(tb_necessidades necessidadeModel)
         {
-            if (ModelState.IsValid)
+            try
             {
-                tb_necessidades.data_criado = DateTime.Now;
-                tb_necessidades.data_alterado = DateTime.Now;
-                db.tb_necessidades.Add(tb_necessidades);
-                db.SaveChanges();
+                using (DbModels dbModel = new DbModels())
+                {
+                    necessidadeModel.data_criado = DateTime.Now;
+                    necessidadeModel.data_alterado = DateTime.Now;
+                    dbModel.tb_necessidades.Add(necessidadeModel);
+                    dbModel.SaveChanges();
+                }
+
                 return RedirectToAction("Index");
             }
-
-            return View(tb_necessidades);
+            catch
+            {
+                return View();
+            }
         }
 
         // GET: Necessidades/Edit/5
-        public ActionResult Edit(int? id)
+        public ActionResult Edit(int id)
         {
-            if (id == null)
+            tb_necessidades necessidadeModel = new tb_necessidades();
+            using (DbModels dbModel = new DbModels())
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                necessidadeModel = dbModel.tb_necessidades.Where(x => x.codigo == id).FirstOrDefault();
             }
-            tb_necessidades tb_necessidades = db.tb_necessidades.Find(id);
-            if (tb_necessidades == null)
-            {
-                return HttpNotFound();
-            }
-            return View(tb_necessidades);
+            return View(necessidadeModel);
         }
 
         // POST: Necessidades/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "codigo,codigo_artigo,quantidade_atual,estado,data_criado,data_alterado,codigo_utilizador")] tb_necessidades tb_necessidades)
+        public ActionResult Edit(tb_necessidades necessidadeModel)
         {
-            if (ModelState.IsValid)
+            using (DbModels dbModel = new DbModels())
             {
-
-                tb_necessidades.data_alterado = DateTime.Now;
-                db.Entry(tb_necessidades).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                necessidadeModel.data_alterado = DateTime.Now;
+                dbModel.Entry(necessidadeModel).State = EntityState.Modified;
+                dbModel.SaveChanges();
             }
-            return View(tb_necessidades);
+            return RedirectToAction("Index");
         }
 
+
         // GET: Necessidades/Delete/5
-        public ActionResult Delete(int? id)
+        public ActionResult Delete(int id)
         {
-            if (id == null)
+            using (DbModels dbModel = new DbModels())
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                return View(dbModel.tb_necessidades.Where(x => x.codigo == id).FirstOrDefault());
             }
-            tb_necessidades tb_necessidades = db.tb_necessidades.Find(id);
-            if (tb_necessidades == null)
-            {
-                return HttpNotFound();
-            }
-            return View(tb_necessidades);
         }
 
         // POST: Necessidades/Delete/5
         [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult Delete(int id, FormCollection collection)
         {
-            tb_necessidades tb_necessidades = db.tb_necessidades.Find(id);
-            db.tb_necessidades.Remove(tb_necessidades);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+            try
+            {
+                // TODO: Add delete logic here
+                using (DbModels dbModel = new DbModels())
+                {
+                    tb_necessidades necessidade = dbModel.tb_necessidades.Where(x => x.codigo == id).FirstOrDefault();
+                    dbModel.tb_necessidades.Remove(necessidade);
+                    dbModel.SaveChanges();
+                }
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return View();
+            }
         }
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
+       
     }
 }
