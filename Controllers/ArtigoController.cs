@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -11,12 +12,34 @@ namespace GestaoArtigos.Controllers
     public class ArtigoController : Controller
     {
         // GET: Artigo/Index
-        public ActionResult Index()
-        {
-            using (DbModels dbModel = new DbModels())
-            {
-            return View(dbModel.tb_artigos.ToList());
-            }
+        public ActionResult Index(string sortOrder){
+
+                DbModels dbModel = new DbModels();
+
+                ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+                ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "Date";
+                var artigos = from p in dbModel.tb_artigos
+                               select p;
+
+                switch (sortOrder)
+                { 
+                    case "name_desc":
+                        artigos = artigos.OrderByDescending(p => p.referencia);
+                        break;
+                    case "Date":
+                        artigos = artigos.OrderBy(p => p.data_criado);
+                        break;
+                    case "date_desc":
+                        artigos = artigos.OrderByDescending(p => p.data_criado);
+                        break;
+                    default:
+                        artigos = artigos.OrderBy(p => p.referencia);
+                        break;
+                }
+            
+                return View(dbModel.tb_artigos.ToList());
+            
+
         }
 
         // GET: Artigo/Details/5

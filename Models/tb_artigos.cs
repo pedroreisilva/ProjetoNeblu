@@ -25,7 +25,7 @@ namespace GestaoArtigos.Models
         public DateTime data_criado { get; set; }
         [Required]
         public DateTime data_alterado { get; set; }
-        [Required(ErrorMessage = "Insira o seu número de utilizador!")]
+        [RegularExpression(@"^[1-9]\d*$", ErrorMessage = "Insira o seu número de utilizador!")]
         public int codigo_utilizador { get; set; }
     }
 }

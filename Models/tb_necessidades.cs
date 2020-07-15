@@ -20,15 +20,16 @@ namespace GestaoArtigos.Models
         public int codigo { get; set; }
         [Required(ErrorMessage = "Insira o número do artigo!")]
         public int codigo_artigo { get; set; }
-        [Required(ErrorMessage = "Insira qual a quantidade em stock!")]
+        [RegularExpression(@"^[1-9]\d*$", ErrorMessage = "Insira um valor válido!")]
         public double quantidade_atual { get; set; }
-        [Required(ErrorMessage = "Insira o estado do artigo!")]
+        [Required]
         public string estado { get; set; }
         [Required]
         public System.DateTime data_criado { get; set; }
         [Required]
         public System.DateTime data_alterado { get; set; }
-        [Required(ErrorMessage = "Insira o seu número de utilizador!")]
+
+        [RegularExpression(@"^[1-9]\d*$", ErrorMessage = "Insira o seu número de utilizador!")]
         public int codigo_utilizador { get; set; }
     }
 

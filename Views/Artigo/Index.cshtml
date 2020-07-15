@@ -16,13 +16,13 @@
 <table class="table">
     <tr>
         <th>
-            Referência
+            @Html.ActionLink("Referência", "Index", new { sortOrder = ViewBag.NameSortParm })
         </th>
         <th>
             Descrição
         </th>
         <th>
-            Data de Criação
+            @Html.ActionLink("Data de criação", "Index", new { sortOrder = ViewBag.DateSortParm })
         </th>
         <th>
             Última Alteração
