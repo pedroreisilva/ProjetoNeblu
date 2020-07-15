@@ -18,6 +18,7 @@ namespace GestaoArtigos.Models
         [Required]
         public int codigo { get; set; }
         [Required(ErrorMessage = "Insira o referência do artigo!")]
+        [Key]
         public string referencia { get; set; }
         public string descricao { get; set; }
         [Required]

@@ -42,6 +42,12 @@ namespace GestaoArtigos.Controllers
             {
                 using (DbModels dbModel = new DbModels())
                 {
+                    if (dbModel.tb_artigos.Any(p => p.referencia == artigoModel.referencia))
+                    {
+                        ViewBag.ErrorMessage = "A referência já existe!";
+                        return View();
+                    }
+
                     artigoModel.data_criado = DateTime.Now;
                     artigoModel.data_alterado = DateTime.Now;
                     dbModel.tb_artigos.Add(artigoModel);
@@ -53,6 +59,7 @@ namespace GestaoArtigos.Controllers
             catch
             {
                 return View();
+
             }
         }
 
