@@ -17,9 +17,9 @@ namespace GestaoArtigos.Models
     {
         [Required]
         public int codigo { get; set; }
-        [Required(ErrorMessage = "Insira o referência do artigo!")]
-        [Key]
+        [Required(ErrorMessage = "Insira a referência do artigo!")]
         public string referencia { get; set; }
+        [Required(ErrorMessage = "Insira uma descrição do artigo!")]
         public string descricao { get; set; }
         [Required]
         public DateTime data_criado { get; set; }
