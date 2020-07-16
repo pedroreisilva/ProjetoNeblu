@@ -46,6 +46,11 @@ namespace GestaoArtigos.Controllers
             {
                 using (DbModels dbModel = new DbModels())
                 {
+                    if (dbModel.tb_necessidades.Any(p => p.codigo_artigo == necessidadeModel.codigo_artigo))
+                    {
+                        ViewBag.ErrorMessage = "A referência já existe!";
+                        return View();
+                    }
                     necessidadeModel.data_criado = DateTime.Now;
                     necessidadeModel.data_alterado = DateTime.Now;
                     dbModel.tb_necessidades.Add(necessidadeModel);

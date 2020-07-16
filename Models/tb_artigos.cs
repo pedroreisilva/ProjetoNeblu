@@ -17,9 +17,11 @@ namespace GestaoArtigos.Models
     {
         [Required]
         public int codigo { get; set; }
-        [Required(ErrorMessage = "Insira a referência do artigo!")]
+        [Required]
+        [RegularExpression(@"^[a-zA-Z0-9]+$", ErrorMessage = "Insira apenas caracteres alfanúmericos!")]
+
         public string referencia { get; set; }
-        [Required(ErrorMessage = "Insira uma descrição do artigo!")]
+        [Required(ErrorMessage ="Introduza uma descrição válida!")]
         public string descricao { get; set; }
         [Required]
         public DateTime data_criado { get; set; }

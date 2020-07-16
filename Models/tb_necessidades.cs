@@ -18,9 +18,10 @@ namespace GestaoArtigos.Models
     {
         [Required]
         public int codigo { get; set; }
-        [Required(ErrorMessage = "Insira o número do artigo!")]
+
+        [RegularExpression(@"^[1-9]\d*$", ErrorMessage = "Insira um valor código válido!")]
         public int codigo_artigo { get; set; }
-        [RegularExpression(@"^[1-9]\d*$", ErrorMessage = "Insira um valor válido!")]
+        [RegularExpression(@"^[1-9]\d*$", ErrorMessage = "Insira uma quantidade valida!")]
         public double quantidade_atual { get; set; }
         [Required]
         public string estado { get; set; }
