@@ -6,24 +6,38 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using GestaoArtigos.Models;
+using PagedList;
+
 
 namespace GestaoArtigos.Controllers
 {
     public class ArtigoController : Controller
     {
         // GET: Artigo/Index
-        public ActionResult Index(string sortOrder){
+        public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page)
+        {
 
                 DbModels dbModel = new DbModels();
 
-                ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+                ViewBag.CurrentSort = sortOrder;
+                ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "ref_desc" : "";
                 ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "Date";
-                var artigos = from p in dbModel.tb_artigos
-                               select p;
+                var artigos = from p in dbModel.tb_artigos select p;
 
-                switch (sortOrder)
+                if (searchString != null)
+                {
+                    page = 1;
+                }
+                else
+                {
+                    searchString = currentFilter;
+                }
+
+                ViewBag.CurrentFilter = searchString;
+
+            switch (sortOrder)
                 { 
-                    case "name_desc":
+                    case "ref_desc":
                         artigos = artigos.OrderByDescending(p => p.referencia);
                         break;
                     case "Date":
@@ -36,8 +50,12 @@ namespace GestaoArtigos.Controllers
                         artigos = artigos.OrderBy(p => p.referencia);
                         break;
                 }
-            
-                return View(dbModel.tb_artigos.ToList());
+
+            int pageSize = 10;
+            int pageNumber = (page ?? 1);
+
+
+            return View(dbModel.tb_artigos.ToList().ToPagedList(pageNumber, pageSize));
             
 
         }

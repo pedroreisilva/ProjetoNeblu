@@ -1,8 +1,12 @@
-﻿@model IEnumerable<GestaoArtigos.Models.tb_artigos>
+﻿@model PagedList.IPagedList<GestaoArtigos.Models.tb_artigos>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 
 @{
     ViewBag.Title = "Index";
 }
+
+
 <p>
     <a class="btn btn-success" href="/Artigo/Create">Adicionar Novo</a>
     <div class="form-group">
@@ -13,10 +17,11 @@
     </div>
 </p>
 
+
 <table class="table">
     <tr>
         <th>
-            @Html.ActionLink("Referência", "Index", new { sortOrder = ViewBag.NameSortParm })
+            @Html.ActionLink("Referência", "Index", new { sortOrder = ViewBag.RefSortParm })
         </th>
         <th>
             Descrição
@@ -33,7 +38,8 @@
         <th></th>
     </tr>
 
-    @foreach (var item in Model) {
+    @foreach (var item in Model)
+    {
         <tr class="Search">
             <td>
                 @Html.DisplayFor(modelItem => item.referencia)
@@ -57,8 +63,13 @@
             </td>
         </tr>
     }
-
 </table>
+<br />
+Página @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) de @Model.PageCount
+
+@Html.PagedListPager(Model, page => Url.Action("Index",
+    new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+
 
 <script src="~/Scripts/jquery-3.4.1.min.js"></script>
 
