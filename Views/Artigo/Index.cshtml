@@ -1,6 +1,8 @@
 ﻿@model PagedList.IPagedList<GestaoArtigos.Models.tb_artigos>
 @using PagedList.Mvc;
 <link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
 
 @{
     ViewBag.Title = "Index";
@@ -12,7 +14,7 @@
     <div class="form-group">
         <div class="input-group">
             <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
-            <input type="text" id="Search" placeholder="Search" class="form-control" />
+            <input type="text" id="Search" placeholder="Procurar" class="form-control" />
         </div>
     </div>
 </p>

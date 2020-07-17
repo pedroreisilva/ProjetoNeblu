@@ -1,4 +1,5 @@
 ﻿@model GestaoArtigos.Models.tb_necessidades
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
 
 @{
     ViewBag.Title = "Delete";
@@ -54,9 +55,9 @@
     {
         @Html.AntiForgeryToken()
 
-    <div class="form-actions no-color">
-        <input type="submit" value="Delete" class="btn btn-warning" /> |
-        <a class="btn btn-primary" href="/Necessidades/">Voltar à lista</a>
-    </div>
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-warning" /> |
+            <a class="btn btn-primary" href="/Necessidades/">Voltar à lista</a>
+        </div>
     }
 </div>

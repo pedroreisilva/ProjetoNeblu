@@ -1,4 +1,5 @@
 ﻿@model GestaoArtigos.Models.tb_necessidades
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
 
 @{
     ViewBag.Title = "Edit";
@@ -8,19 +9,19 @@
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.codigo)
 
-    <div class="form-group">
-        <label class="control-label col-sm-2"><b>ID do Artigo</b></label>
-        <div class="col-md-10">
-            @Html.DisplayFor(model => model.codigo_artigo)
-            @Html.HiddenFor(model => model.codigo_artigo, new { htmlAttributes = new { @class = "form-control" } })
+        <div class="form-group">
+            <label class="control-label col-sm-2"><b>ID do Artigo</b></label>
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.codigo_artigo)
+                @Html.HiddenFor(model => model.codigo_artigo, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
         </div>
-    </div>
 
         <div class="form-group">
             <label class="control-label col-sm-2"><b>Stock Atual</b></label>
