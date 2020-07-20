@@ -20,21 +20,21 @@
 </p>
 
 
-<table class="table">
+<table id="myTable" class="table">
     <tr>
-        <th>
-            @Html.ActionLink("Referência", "Index", new { sortOrder = ViewBag.NameSortParm })
+        <th onclick="w3.sortHTML('#myTable', '.item', 'td:nth-child(1)')" style="cursor:pointer">
+            Referência
         </th>
-        <th>
+        <th onclick="w3.sortHTML('#myTable', '.item', 'td:nth-child(2)')" style="cursor:pointer">
             Descrição
         </th>
-        <th>
-            @Html.ActionLink("Data de criação", "Index", new { sortOrder = ViewBag.DateSortParm })
+        <th onclick="w3.sortHTML('#myTable', '.item', 'td:nth-child(3)')" style="cursor:pointer">
+            Data de criação
         </th>
-        <th>
+        <th onclick="w3.sortHTML('#myTable', '.item', 'td:nth-child(4)')" style="cursor:pointer">
             Última Alteração
         </th>
-        <th>
+        <th onclick="w3.sortHTML('#myTable', '.item', 'td:nth-child(5)')" style="cursor:pointer">
             Nº do utilizador
         </th>
         <th></th>
@@ -42,7 +42,7 @@
 
     @foreach (var item in Model)
     {
-        <tr class="Search">
+        <tr class="item Search">
             <td>
                 @Html.DisplayFor(modelItem => item.referencia)
             </td>
@@ -67,6 +67,7 @@
     }
 </table>
 <br />
+
 Página @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) de @Model.PageCount
 
 @Html.PagedListPager(Model, page => Url.Action("Index",
@@ -74,6 +75,7 @@ Página @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) de @Model.P
 
 
 <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="https://www.w3schools.com/lib/w3.js"></script>
 
 <script>
     $(document).ready(function () {
