@@ -23,19 +23,9 @@ namespace GestaoArtigos.Controllers
                 ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "ref_desc" : "";
                 ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "Date";
                 var artigos = from p in dbModel.tb_artigos select p;
-
-                if (searchString != null)
-                {
-                    page = 1;
-                }
-                else
-                {
-                    searchString = currentFilter;
-                }
-
-                ViewBag.CurrentFilter = searchString;
-
-            switch (sortOrder)
+               
+            
+                switch (sortOrder)
                 { 
                     case "ref_desc":
                         artigos = artigos.OrderByDescending(p => p.referencia);
@@ -50,6 +40,21 @@ namespace GestaoArtigos.Controllers
                         artigos = artigos.OrderBy(p => p.referencia);
                         break;
                 }
+
+
+
+                if (searchString != null)
+                {
+                    page = 1;
+                }
+                else
+                {
+                    searchString = currentFilter;
+                }
+
+                ViewBag.CurrentFilter = searchString;
+
+            
 
             int pageSize = 10;
             int pageNumber = (page ?? 1);

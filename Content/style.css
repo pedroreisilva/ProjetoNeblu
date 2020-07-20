@@ -45,6 +45,7 @@ body{
 
 form{
 	width: 360px;
+	padding-top: 30px;
 }
 
 .login-content img{

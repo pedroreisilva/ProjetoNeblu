@@ -17,7 +17,7 @@
 
         <div class="form-group">
             <label class="control-label col-sm-2"><b>ID do Artigo</b></label>
-            <div class="col-md-10">
+            <div class="control-label col-sm-2">
                 @Html.DisplayFor(model => model.codigo_artigo)
                 @Html.HiddenFor(model => model.codigo_artigo, new { htmlAttributes = new { @class = "form-control" } })
             </div>
@@ -25,7 +25,7 @@
 
         <div class="form-group">
             <label class="control-label col-sm-2"><b>Stock Atual</b></label>
-            <div class="col-md-10">
+            <div class="control-label col-sm-2">
                 @Html.EditorFor(model => model.quantidade_atual, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.quantidade_atual, "", new { @class = "text-danger" })
             </div>
@@ -33,7 +33,7 @@
 
         <div class="form-group">
             <label class="control-label col-sm-2"><b>Estado</b></label>
-            <div class="col-md-10">
+            <div class="control-label col-sm-2">
                 @Html.DropDownListFor(model => model.estado, new SelectList(Enum.GetValues(typeof(Estado))), new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.estado, "", new { @class = "text-danger" })
             </div>
@@ -44,7 +44,7 @@
 
         <div class="form-group">
             <label class="control-label col-sm-2"><b>Nº de utilizador</b></label>
-            <div class="col-md-10">
+            <div class="control-label col-sm-2">
                 @Html.EditorFor(model => model.codigo_utilizador, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.codigo_utilizador, "", new { @class = "text-danger" })
             </div>
