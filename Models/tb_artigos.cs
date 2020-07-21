@@ -17,16 +17,22 @@ namespace GestaoArtigos.Models
     {
         [Required]
         public int codigo { get; set; }
+
         [Required]
         [RegularExpression(@"^[a-zA-Z0-9]+$", ErrorMessage = "Insira apenas caracteres alfanúmericos!")]
-
         public string referencia { get; set; }
-        [Required(ErrorMessage ="Introduza uma descrição válida!")]
+
+        [Required]
+        [StringLength(30, ErrorMessage = "A descrição deve ter entre {2} a {1} caracteres", MinimumLength = 5)]
         public string descricao { get; set; }
+        
         [Required]
         public DateTime data_criado { get; set; }
+        
         [Required]
         public DateTime data_alterado { get; set; }
+
+        [Required]
         [RegularExpression(@"^[1-9]\d*$", ErrorMessage = "Insira o seu número de utilizador!")]
         public int codigo_utilizador { get; set; }
     }
