@@ -14,49 +14,11 @@ namespace GestaoArtigos.Controllers
     public class NecessidadesController : Controller
     {
         // GET: Necessidades/Index
-        public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page)
+        public ActionResult Index()
         {
             DbModels dbModel = new DbModels();
 
-            ViewBag.CurrentSort = sortOrder;
-            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "ref_desc" : "";
-            ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "Date";
-            var necessidades = from p in dbModel.tb_necessidades select p;
-
-            if (searchString != null)
-            {
-                page = 1;
-            }
-            else
-            {
-                searchString = currentFilter;
-            }
-
-            ViewBag.CurrentFilter = searchString;
-
-            switch (sortOrder)
-            {
-                case "ref_desc":
-                    necessidades = necessidades.OrderByDescending(p => p.codigo_artigo);
-                    break;
-                case "Date":
-                    necessidades = necessidades.OrderBy(p => p.data_criado);
-                    break;
-                case "date_desc":
-                    necessidades = necessidades.OrderByDescending(p => p.data_criado);
-                    break;
-                default:
-                    necessidades = necessidades.OrderBy(p => p.codigo_artigo);
-                    break;
-            
-            }
-
-            int pageSize = 10;
-            int pageNumber = (page ?? 1);
-
-
-            return View(dbModel.tb_necessidades.ToList().ToPagedList(pageNumber, pageSize));
-
+            return View(dbModel.tb_necessidades.ToList());
 
         }
 

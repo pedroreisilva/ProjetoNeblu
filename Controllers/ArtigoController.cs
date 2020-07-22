@@ -14,44 +14,11 @@ namespace GestaoArtigos.Controllers
     public class ArtigoController : Controller
     {
         // GET: Artigo/Index
-        public ActionResult Index(string sortOrder, string currentFilter, string searchString)
+        public ActionResult Index()
         {
-
-                DbModels dbModel = new DbModels();
-
-                ViewBag.CurrentSort = sortOrder;
-                ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "ref_desc" : "";
-                ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "Date";
-                var artigos = from p in dbModel.tb_artigos select p;
-               
-            
-                switch (sortOrder)
-                { 
-                    case "ref_desc":
-                        artigos = artigos.OrderByDescending(p => p.referencia);
-                        break;
-                    case "Date":
-                        artigos = artigos.OrderBy(p => p.data_criado);
-                        break;
-                    case "date_desc":
-                        artigos = artigos.OrderByDescending(p => p.data_criado);
-                        break;
-                    default:
-                        artigos = artigos.OrderBy(p => p.referencia);
-                        break;
-                }
-
-
-
-
-                ViewBag.CurrentFilter = searchString;
-
-            
-
+            DbModels dbModel = new DbModels();
 
             return View(dbModel.tb_artigos.ToList());
-            
-
         }
 
         // GET: Artigo/Details/5
