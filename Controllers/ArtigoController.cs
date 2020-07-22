@@ -14,7 +14,7 @@ namespace GestaoArtigos.Controllers
     public class ArtigoController : Controller
     {
         // GET: Artigo/Index
-        public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page)
+        public ActionResult Index(string sortOrder, string currentFilter, string searchString)
         {
 
                 DbModels dbModel = new DbModels();
@@ -43,24 +43,13 @@ namespace GestaoArtigos.Controllers
 
 
 
-                if (searchString != null)
-                {
-                    page = 1;
-                }
-                else
-                {
-                    searchString = currentFilter;
-                }
 
                 ViewBag.CurrentFilter = searchString;
 
             
 
-            int pageSize = 10;
-            int pageNumber = (page ?? 1);
 
-
-            return View(dbModel.tb_artigos.ToList().ToPagedList(pageNumber, pageSize));
+            return View(dbModel.tb_artigos.ToList());
             
 
         }
