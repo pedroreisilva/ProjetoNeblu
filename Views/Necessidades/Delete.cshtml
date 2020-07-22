@@ -5,7 +5,11 @@
     ViewBag.Title = "Delete";
 }
 
-<h4>Tem a certeza que deseja eliminar o pedido ?</h4>
+<p>
+    <h3>Tem a certeza que deseja eliminar o pedido ?</h3>
+</p>
+
+<br />
 
 <div class="form-horizontal">
 
@@ -51,13 +55,17 @@
         </div>
     </div>
 
-    @using (Html.BeginForm())
-    {
-        @Html.AntiForgeryToken()
+    <div class="form-group">
 
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-warning" /> |
-            <a class="btn btn-primary" href="/Necessidades/Index">Voltar à lista</a>
-        </div>
-    }
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Delete" class="btn btn-warning" /> |
+                <a class="btn btn-primary" href="/Necessidades/Index">Voltar à lista</a>
+            </div>
+        }
+
+    </div>
 </div>
