@@ -222,26 +222,6 @@
     <Content Include="Content\img\logo_only.png" />
     <Content Include="Content\img\wave.png" />
     <Content Include="Content\jquery.dataTables.css" />
-    <Content Include="Content\lib\bootstrap\dist\css\bootstrap-grid.css" />
-    <Content Include="Content\lib\bootstrap\dist\css\bootstrap-grid.min.css" />
-    <Content Include="Content\lib\bootstrap\dist\css\bootstrap-reboot.css" />
-    <Content Include="Content\lib\bootstrap\dist\css\bootstrap-reboot.min.css" />
-    <Content Include="Content\lib\bootstrap\dist\css\bootstrap.css" />
-    <Content Include="Content\lib\bootstrap\dist\css\bootstrap.min.css" />
-    <Content Include="Content\lib\bootstrap\dist\js\bootstrap.bundle.js" />
-    <Content Include="Content\lib\bootstrap\dist\js\bootstrap.bundle.min.js" />
-    <Content Include="Content\lib\bootstrap\dist\js\bootstrap.js" />
-    <Content Include="Content\lib\bootstrap\dist\js\bootstrap.min.js" />
-    <Content Include="Content\lib\jquery-validation-unobtrusive\jquery.validate.unobtrusive.js" />
-    <Content Include="Content\lib\jquery-validation-unobtrusive\jquery.validate.unobtrusive.min.js" />
-    <Content Include="Content\lib\jquery-validation-unobtrusive\LICENSE.txt" />
-    <Content Include="Content\lib\jquery-validation\dist\additional-methods.js" />
-    <Content Include="Content\lib\jquery-validation\dist\additional-methods.min.js" />
-    <Content Include="Content\lib\jquery-validation\dist\jquery.validate.js" />
-    <Content Include="Content\lib\jquery-validation\dist\jquery.validate.min.js" />
-    <Content Include="Content\lib\jquery\dist\jquery.js" />
-    <Content Include="Content\lib\jquery\dist\jquery.min.js" />
-    <Content Include="Content\lib\jquery\LICENSE.txt" />
     <Content Include="Content\img\logo_1.png" />
     <Content Include="Content\login.css" />
     <Content Include="Content\styles.css" />
@@ -267,19 +247,6 @@
     <Content Include="Models\DbModel.edmx.diagram">
       <DependentUpon>DbModel.edmx</DependentUpon>
     </Content>
-    <Content Include="Content\lib\bootstrap\dist\css\bootstrap-grid.css.map" />
-    <Content Include="Content\lib\bootstrap\dist\css\bootstrap-grid.min.css.map" />
-    <Content Include="Content\lib\bootstrap\dist\css\bootstrap-reboot.css.map" />
-    <Content Include="Content\lib\bootstrap\dist\css\bootstrap-reboot.min.css.map" />
-    <Content Include="Content\lib\bootstrap\dist\css\bootstrap.css.map" />
-    <Content Include="Content\lib\bootstrap\dist\css\bootstrap.min.css.map" />
-    <Content Include="Content\lib\bootstrap\dist\js\bootstrap.bundle.js.map" />
-    <Content Include="Content\lib\bootstrap\dist\js\bootstrap.bundle.min.js.map" />
-    <Content Include="Content\lib\bootstrap\dist\js\bootstrap.js.map" />
-    <Content Include="Content\lib\bootstrap\dist\js\bootstrap.min.js.map" />
-    <Content Include="Content\lib\bootstrap\LICENSE" />
-    <Content Include="Content\lib\jquery-validation\LICENSE.md" />
-    <Content Include="Content\lib\jquery\dist\jquery.min.map" />
     <Content Include="Scripts\contact_me.js" />
     <Content Include="Scripts\contact_me.min.js" />
     <Content Include="Scripts\dataTables.bootstrap4.min.js" />
