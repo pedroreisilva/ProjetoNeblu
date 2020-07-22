@@ -219,11 +219,11 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\dataTables.bootstrap4.min.css" />
     <Content Include="Content\img\bg.svg" />
     <Content Include="Content\img\logo_only.png" />
     <Content Include="Content\img\wave.png" />
     <Content Include="Content\jquery.dataTables.css" />
-    <Content Include="Content\jquery.dataTables.min.css" />
     <Content Include="Content\lib\bootstrap\dist\css\bootstrap-grid.css" />
     <Content Include="Content\lib\bootstrap\dist\css\bootstrap-grid.min.css" />
     <Content Include="Content\lib\bootstrap\dist\css\bootstrap-reboot.css" />
@@ -287,6 +287,7 @@
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\contact_me.js" />
     <Content Include="Scripts\contact_me.min.js" />
+    <Content Include="Scripts\dataTables.bootstrap4.min.js" />
     <Content Include="Scripts\freelancer.js" />
     <Content Include="Scripts\freelancer.min.js" />
     <Content Include="Scripts\jqBootstrapValidation.js" />
