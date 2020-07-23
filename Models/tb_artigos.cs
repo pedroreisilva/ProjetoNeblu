@@ -18,11 +18,11 @@ namespace GestaoArtigos.Models
         [Required]
         public int codigo { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Introduza a referência do artigo!")]
         [RegularExpression(@"^[a-zA-Z0-9]+$", ErrorMessage = "Insira apenas caracteres alfanúmericos!")]
         public string referencia { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Introduza uma descrição para o artigo!")]
         [StringLength(30, ErrorMessage = "A descrição deve ter entre {2} a {1} caracteres", MinimumLength = 5)]
         public string descricao { get; set; }
         
@@ -32,7 +32,7 @@ namespace GestaoArtigos.Models
         [Required]
         public DateTime data_alterado { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Introduza o seu número de utilizador!")]
         [RegularExpression(@"^[1-9]\d*$", ErrorMessage = "Insira o seu número de utilizador!")]
         public int codigo_utilizador { get; set; }
     }
