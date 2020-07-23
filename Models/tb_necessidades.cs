@@ -18,23 +18,28 @@ namespace GestaoArtigos.Models
     {
         [Required]
         public int codigo { get; set; }
+
         [Required(ErrorMessage = "Introduza o número do artigo!")]
-        [RegularExpression(@"^[1-9]\d*$", ErrorMessage = "Insira um valor código válido!")]
+        [RegularExpression(@"^[1-9][0-9]*$", ErrorMessage = "Insira um valor código válido!")]
         public int codigo_artigo { get; set; }
+
+        [Range(0, 10000, ErrorMessage = "Introduza um número válido!")]
         [Required(ErrorMessage = "Introduza a quantidade atual!")]
-        [RegularExpression(@"^[0-9]*\.[0-9]*", ErrorMessage = "Insira uma quantidade valida!")]
         public double quantidade_atual { get; set; }
+
         [Required]
         public string estado { get; set; }
+
         [Required]
         public System.DateTime data_criado { get; set; }
+
         [Required]
         public System.DateTime data_alterado { get; set; }
+
+        [Range(1, 1000000, ErrorMessage = "Introduza um número válido!")]
         [Required(ErrorMessage = "Introduza o seu número de utilizador!")]
-        [RegularExpression(@"^[1-9]\d*$", ErrorMessage = "Insira o seu número de utilizador!")]
         public int codigo_utilizador { get; set; }
     }
-
 }
     public enum Estado
     {
