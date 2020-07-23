@@ -5,8 +5,8 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="fb9b0871df934f95a5b5cde98dbdd1eb" Name="Diagram1">
-        <EntityTypeShape EntityType="MvcCrudModel.tb_artigos" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="MvcCrudModel.tb_necessidades" Width="1.5" PointX="3.25" PointY="0.625" />
+        <EntityTypeShape EntityType="MvcCrudModel.tb_artigos" Width="1.5" PointX="5.75" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MvcCrudModel.tb_necessidades" Width="1.5" PointX="7.75" PointY="1.375" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

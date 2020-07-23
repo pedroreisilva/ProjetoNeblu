@@ -253,8 +253,8 @@
     <Content Include="Scripts\freelancer.js" />
     <Content Include="Scripts\freelancer.min.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
-    <Content Include="Scripts\jquery.dataTables.js" />
     <Content Include="Scripts\jquery.dataTables.min.js" />
+    <Content Include="Scripts\main.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
