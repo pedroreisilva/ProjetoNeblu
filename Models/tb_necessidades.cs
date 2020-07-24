@@ -20,7 +20,7 @@ namespace GestaoArtigos.Models
         public int codigo { get; set; }
 
         [Required(ErrorMessage = "Introduza o número do artigo!")]
-        [RegularExpression(@"^[1-9][0-9]*$", ErrorMessage = "Insira um valor código válido!")]
+        [Range(1, 1000000, ErrorMessage = "Introduza um número válido!")]
         public int codigo_artigo { get; set; }
 
         [Range(0, 10000, ErrorMessage = "Introduza um número válido!")]

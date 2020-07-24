@@ -43,7 +43,7 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Guardar" class="btn btn-warning" onclick="this.disabled=true;this.form.submit();"/> |
+                <input type="submit" value="Guardar" class="btn btn-warning savebtn" onclick="this.disabled=true;this.form.submit();"/> |
                 <a class="btn btn-primary" href="/Artigo">Voltar à lista</a>
             </div>
         </div>
@@ -53,3 +53,18 @@
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
+
+<script>
+    $(document).ready(function () {
+        $(".savebtn").attr('disabled', 'disabled');
+
+        $("#UserName").keyup(function () {
+            $(".savebtn").removeAttr('disabled');
+        });
+
+        $(".savebtn").click(function () {
+            $(this).attr('disabled', 'disabled');
+        });
+    });
+
+</script>

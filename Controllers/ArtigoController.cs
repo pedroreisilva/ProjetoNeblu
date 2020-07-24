@@ -80,13 +80,21 @@ namespace GestaoArtigos.Controllers
         [HttpPost]
         public ActionResult Edit(tb_artigos artigoModel)
         {
-            using (DbModels dbModel = new DbModels())
+            try
             {
-                artigoModel.data_alterado = DateTime.Now;
-                dbModel.Entry(artigoModel).State = EntityState.Modified;
-                dbModel.SaveChanges();
+                using (DbModels dbModel = new DbModels())
+                {
+
+                    artigoModel.data_alterado = DateTime.Now;
+                    dbModel.Entry(artigoModel).State = EntityState.Modified;
+                    dbModel.SaveChanges();
+                }
+                return RedirectToAction("Index");
             }
-            return RedirectToAction("Index");
+            catch
+            {
+                return View(artigoModel);
+            }
         }
 
         // GET: Artigo/Delete/5

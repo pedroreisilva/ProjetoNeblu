@@ -83,14 +83,24 @@ namespace GestaoArtigos.Controllers
         [HttpPost]
         public ActionResult Edit(tb_necessidades necessidadeModel)
         {
-            using (DbModels dbModel = new DbModels())
+            try
             {
-                necessidadeModel.data_alterado = DateTime.Now;
-                dbModel.Entry(necessidadeModel).State = EntityState.Modified;
-                dbModel.SaveChanges();
+                using (DbModels dbModel = new DbModels())
+                {
+
+                    necessidadeModel.data_alterado = DateTime.Now;
+                    dbModel.Entry(necessidadeModel).State = EntityState.Modified;
+                    dbModel.SaveChanges();
+                }
+                return RedirectToAction("Index");
             }
-            return RedirectToAction("Index");
+            catch
+            {
+                return View(necessidadeModel);
+            }
         }
+
+
 
 
         // GET: Necessidades/Delete/5
