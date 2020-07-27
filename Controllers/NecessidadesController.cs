@@ -101,8 +101,6 @@ namespace GestaoArtigos.Controllers
         }
 
 
-
-
         // GET: Necessidades/Delete/5
         public ActionResult Delete(int id)
         {

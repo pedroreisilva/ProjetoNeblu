@@ -29,7 +29,7 @@
         <div class="form-group">
             <label class="control-label col-sm-2">Stock Atual</label>
             <div class="col-md-10">
-                @Html.EditorFor(model => model.quantidade_atual, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.quantidade_atual, new { htmlAttributes = new { @class = "form-control", @maxlength = "6" } })
                 @Html.ValidationMessageFor(model => model.quantidade_atual, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -46,7 +46,7 @@
         <div class="form-group">
             <label class="control-label col-sm-2">Nº de utilizador</label>
             <div class="col-md-10">
-                @Html.EditorFor(model => model.codigo_utilizador, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.codigo_utilizador, new { htmlAttributes = new { @class = "form-control", @maxlength = "8" } })
                 @Html.ValidationMessageFor(model => model.codigo_utilizador, "", new { @class = "text-danger" })
             </div>
         </div>
