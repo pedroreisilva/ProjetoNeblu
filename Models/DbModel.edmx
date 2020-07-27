@@ -28,9 +28,25 @@
           <Property Name="data_alterado" Type="datetime" Precision="0" Nullable="false" />
           <Property Name="codigo_utilizador" Type="int" Nullable="false" />
         </EntityType>
+        <Association Name="FK_tb_necessidades_tb_artigos">
+          <End Role="tb_artigos" Type="Self.tb_artigos" Multiplicity="1" />
+          <End Role="tb_necessidades" Type="Self.tb_necessidades" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_artigos">
+              <PropertyRef Name="codigo" />
+            </Principal>
+            <Dependent Role="tb_necessidades">
+              <PropertyRef Name="codigo_artigo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="MvcCrudModelStoreContainer">
           <EntitySet Name="tb_artigos" EntityType="Self.tb_artigos" Schema="bd_neblu" store:Type="Tables" />
           <EntitySet Name="tb_necessidades" EntityType="Self.tb_necessidades" Schema="bd_neblu" store:Type="Tables" />
+          <AssociationSet Name="FK_tb_necessidades_tb_artigos" Association="Self.FK_tb_necessidades_tb_artigos">
+            <End Role="tb_artigos" EntitySet="tb_artigos" />
+            <End Role="tb_necessidades" EntitySet="tb_necessidades" />
+          </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -46,10 +62,15 @@
           <Property Name="data_criado" Type="DateTime" Nullable="false" />
           <Property Name="data_alterado" Type="DateTime" Nullable="false" />
           <Property Name="codigo_utilizador" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tb_necessidades" Relationship="MvcCrudModel.FK_tb_necessidades_tb_artigos" FromRole="tb_artigos" ToRole="tb_necessidades" />
         </EntityType>
         <EntityContainer Name="DbModels" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="tb_artigos" EntityType="Self.tb_artigos" />
           <EntitySet Name="tb_necessidades" EntityType="MvcCrudModel.tb_necessidades" />
+          <AssociationSet Name="FK_tb_necessidades_tb_artigos" Association="MvcCrudModel.FK_tb_necessidades_tb_artigos">
+            <End Role="tb_artigos" EntitySet="tb_artigos" />
+            <End Role="tb_necessidades" EntitySet="tb_necessidades" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="tb_necessidades">
           <Key>
@@ -62,7 +83,20 @@
           <Property Name="data_criado" Type="DateTime" Nullable="false" />
           <Property Name="data_alterado" Type="DateTime" Nullable="false" />
           <Property Name="codigo_utilizador" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tb_artigos" Relationship="MvcCrudModel.FK_tb_necessidades_tb_artigos" FromRole="tb_necessidades" ToRole="tb_artigos" />
         </EntityType>
+        <Association Name="FK_tb_necessidades_tb_artigos">
+          <End Type="MvcCrudModel.tb_artigos" Role="tb_artigos" Multiplicity="1" />
+          <End Type="MvcCrudModel.tb_necessidades" Role="tb_necessidades" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_artigos">
+              <PropertyRef Name="codigo" />
+            </Principal>
+            <Dependent Role="tb_necessidades">
+              <PropertyRef Name="codigo_artigo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
