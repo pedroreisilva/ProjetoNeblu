@@ -27,5 +27,6 @@ namespace GestaoArtigos.Models
     
         public virtual DbSet<tb_artigos> tb_artigos { get; set; }
         public virtual DbSet<tb_necessidades> tb_necessidades { get; set; }
+        public virtual DbSet<tb_utilizadores> tb_utilizadores { get; set; }
     }
 }
