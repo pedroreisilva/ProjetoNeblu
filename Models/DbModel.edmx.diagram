@@ -8,6 +8,7 @@
         <EntityTypeShape EntityType="MvcCrudModel.tb_artigos" Width="1.5" PointX="5.75" PointY="1.5" IsExpanded="true" />
         <EntityTypeShape EntityType="MvcCrudModel.tb_necessidades" Width="1.5" PointX="7.75" PointY="1.375" />
         <AssociationConnector Association="MvcCrudModel.FK_tb_necessidades_tb_artigos" />
+        <EntityTypeShape EntityType="MvcCrudModel.tb_utilizadores" Width="1.5" PointX="3.375" PointY="1.5" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
