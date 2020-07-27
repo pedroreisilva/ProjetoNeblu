@@ -20,7 +20,7 @@
             <label class="control-label col-sm-2"><b>Referência</b></label>
             <div class="control-label col-sm-2">
                 @Html.DisplayFor(model => model.referencia)
-                @Html.HiddenFor(model => model.referencia, new { htmlAttributes = new { @class = "form-control", @maxlength = "10" } })
+                @Html.HiddenFor(model => model.referencia, new { htmlAttributes = new { @class = "form-control", @maxlength = "11" } })
             </div>
         </div>
 
@@ -36,7 +36,7 @@
         <div class="form-group">
             <label class="control-label col-sm-2"><b>Nº de utilizador</b></label>
             <div class="control-label col-sm-2">
-                @Html.EditorFor(model => model.codigo_utilizador, new { htmlAttributes = new { @class = "form-control", @maxlength = "8" } })
+                @Html.EditorFor(model => model.codigo_utilizador, new { htmlAttributes = new { @class = "form-control", @maxlength = "11" } })
                 @Html.ValidationMessageFor(model => model.codigo_utilizador, "", new { @class = "text-danger" })
             </div>
         </div>

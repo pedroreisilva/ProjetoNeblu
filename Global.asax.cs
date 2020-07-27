@@ -12,6 +12,7 @@ namespace GestaoArtigos
     {
         protected void Application_Start()
         {
+            DefaultModelBinder.ResourceClassKey = "Errors";
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);

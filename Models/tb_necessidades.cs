@@ -20,10 +20,12 @@ namespace GestaoArtigos.Models
         public int codigo { get; set; }
 
         [Required(ErrorMessage = "Introduza o número do artigo!")]
-        [Range(1, 1000000, ErrorMessage = "Introduza um número válido!")]
+        [Display(Name = "ID do artigo")]
+        [Range(1, 9999999, ErrorMessage = "{0} deve estar contido entre {1} e {2}.")]
         public int codigo_artigo { get; set; }
 
-        [Range(0, 10000, ErrorMessage = "Introduza um número válido!")]
+        [Display(Name = "Quantidade atual")]
+        [Range(1, 9999999, ErrorMessage = "{0} deve estar contido entre {1} e {2}.")]
         [Required(ErrorMessage = "Introduza a quantidade atual!")]
         public double quantidade_atual { get; set; }
 
@@ -36,8 +38,9 @@ namespace GestaoArtigos.Models
         [Required]
         public System.DateTime data_alterado { get; set; }
 
-        [Range(1, 1000000, ErrorMessage = "Introduza um número válido!")]
         [Required(ErrorMessage = "Introduza o seu número de utilizador!")]
+        [Display(Name = "Número de utilizador")]
+        [Range(1, 9999999, ErrorMessage = "{0} deve estar contido entre {1} e {2}.")]
         public int codigo_utilizador { get; set; }
     }
 }

@@ -20,6 +20,7 @@ namespace GestaoArtigos.Models
 
         [Required(ErrorMessage = "Introduza a referência do artigo!")]
         [RegularExpression(@"^[a-zA-Z0-9]+$", ErrorMessage = "Insira apenas caracteres alfanúmericos!")]
+        [StringLength(11, ErrorMessage = "A referência deve ter um máximo de {1} caracteres")]
         public string referencia { get; set; }
 
         [Required(ErrorMessage = "Introduza uma descrição para o artigo!")]
@@ -32,8 +33,9 @@ namespace GestaoArtigos.Models
         [Required]
         public DateTime data_alterado { get; set; }
 
-        [Range(1, 1000000, ErrorMessage = "Introduza um número válido!")]
         [Required(ErrorMessage = "Introduza o seu número de utilizador!")]
+        [Display(Name = "Número de utilizador")]
+        [Range(1, 99999999999, ErrorMessage = "{0} deve estar contido entre {1} e {2}.")]
         public int codigo_utilizador { get; set; }
     }
 }
