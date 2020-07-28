@@ -28,6 +28,19 @@
           <Property Name="data_alterado" Type="datetime" Precision="0" Nullable="false" />
           <Property Name="codigo_utilizador" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="tb_utilizadores">
+          <Key>
+            <PropertyRef Name="codigo" />
+          </Key>
+          <Property Name="codigo" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="utilizador" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="password" Type="varchar" MaxLength="128" />
+          <Property Name="nome" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="data_criacao" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="data_ultimo_acesso" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="bloqueado" Type="enum" Nullable="false" />
+          <Property Name="numero_tentativas" Type="smallint" Nullable="false" />
+        </EntityType>
         <Association Name="FK_tb_necessidades_tb_artigos">
           <End Role="tb_artigos" Type="Self.tb_artigos" Multiplicity="1" />
           <End Role="tb_necessidades" Type="Self.tb_necessidades" Multiplicity="*" />
@@ -43,6 +56,7 @@
         <EntityContainer Name="MvcCrudModelStoreContainer">
           <EntitySet Name="tb_artigos" EntityType="Self.tb_artigos" Schema="bd_neblu" store:Type="Tables" />
           <EntitySet Name="tb_necessidades" EntityType="Self.tb_necessidades" Schema="bd_neblu" store:Type="Tables" />
+          <EntitySet Name="tb_utilizadores" EntityType="Self.tb_utilizadores" Schema="bd_neblu" store:Type="Tables" />
           <AssociationSet Name="FK_tb_necessidades_tb_artigos" Association="Self.FK_tb_necessidades_tb_artigos">
             <End Role="tb_artigos" EntitySet="tb_artigos" />
             <End Role="tb_necessidades" EntitySet="tb_necessidades" />
@@ -71,6 +85,7 @@
             <End Role="tb_artigos" EntitySet="tb_artigos" />
             <End Role="tb_necessidades" EntitySet="tb_necessidades" />
           </AssociationSet>
+          <EntitySet Name="tb_utilizadores" EntityType="MvcCrudModel.tb_utilizadores" />
         </EntityContainer>
         <EntityType Name="tb_necessidades">
           <Key>
@@ -97,6 +112,19 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="tb_utilizadores">
+          <Key>
+            <PropertyRef Name="codigo" />
+          </Key>
+          <Property Name="codigo" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="utilizador" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="password" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="nome" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="data_criacao" Type="DateTime" Nullable="false" />
+          <Property Name="data_ultimo_acesso" Type="DateTime" Nullable="false" />
+          <Property Name="bloqueado" Type="String" Nullable="false" MaxLength="65532" FixedLength="false" Unicode="false" />
+          <Property Name="numero_tentativas" Type="Int16" Nullable="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -124,6 +152,20 @@
                 <ScalarProperty Name="estado" ColumnName="estado" />
                 <ScalarProperty Name="quantidade_atual" ColumnName="quantidade_atual" />
                 <ScalarProperty Name="codigo_artigo" ColumnName="codigo_artigo" />
+                <ScalarProperty Name="codigo" ColumnName="codigo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_utilizadores">
+            <EntityTypeMapping TypeName="MvcCrudModel.tb_utilizadores">
+              <MappingFragment StoreEntitySet="tb_utilizadores">
+                <ScalarProperty Name="numero_tentativas" ColumnName="numero_tentativas" />
+                <ScalarProperty Name="bloqueado" ColumnName="bloqueado" />
+                <ScalarProperty Name="data_ultimo_acesso" ColumnName="data_ultimo_acesso" />
+                <ScalarProperty Name="data_criacao" ColumnName="data_criacao" />
+                <ScalarProperty Name="nome" ColumnName="nome" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="utilizador" ColumnName="utilizador" />
                 <ScalarProperty Name="codigo" ColumnName="codigo" />
               </MappingFragment>
             </EntityTypeMapping>
