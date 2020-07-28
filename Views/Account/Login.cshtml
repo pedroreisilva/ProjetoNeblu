@@ -1,5 +1,5 @@
 ﻿@using GestaoArtigos.Models
-@model LoginViewModel
+@model GestaoArtigos.Models.tb_utilizadores
 @{
     Layout = "";
 }
@@ -14,32 +14,33 @@
 <body>
     <img class="wave" src="~/Content/img/wave.png">
     <div class="container">
-        <div class="login-content">
-            <img src="~/Content/img/logo_only.png">
-            <form action="/Necessidades">
-                <div class="input-div one">
-                    <div class="i">
-                        <i class="fas fa-user"></i>
+            <div class="login-content">
+                <img src="~/Content/img/logo_only.png">
+                <form action="/Necessidades">
+                    <div class="input-div one">
+                        <div class="i">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="div">
+                            @Html.EditorFor(model => model.utilizador, new { htmlAttributes = new { placeholder = "Username" } })
+                            @Html.ValidationMessageFor(model => model.utilizador, "", new { @class = "text-danger" })
+                        </div>
                     </div>
-                    <div class="div">
-                        <h5>Username</h5>
-                        <input type="text" class="input">
+                    <div class="input-div pass">
+                        <div class="i">
+                            <i class="fas fa-lock"></i>
+                        </div>
+                        <div class="div">
+                            @Html.PasswordFor(model => model.password, new { @class = "form-control", placeholder = "Password" })
+                            @Html.ValidationMessageFor(model => model.password, "", new { @class = "text-danger" })
+                        </div>
                     </div>
-                </div>
-                <div class="input-div pass">
-                    <div class="i">
-                        <i class="fas fa-lock"></i>
-                    </div>
-                    <div class="div">
-                        <h5>Password</h5>
-                        <input type="password" class="input">
-                    </div>
-                </div>
-                <a href=/Account/ForgotPassword>Esqueceu-se da palava passe ?</a>
-                <input type="submit" class="btn" value="Login">
-            </form>
-        </div>
+                    <a href=/Account/ForgotPassword>Esqueceu-se da palava passe ?</a>
+                    <input type="submit" class="btn" value="Login">
+                </form>
+            </div>
     </div>
-    <script type="text/javascript" src="~/Scripts/main.js"></script>
+
+<script type="text/javascript" src="~/Scripts/main.js"></script>
 </body>
 </html>
