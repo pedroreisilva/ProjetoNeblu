@@ -11,11 +11,20 @@ namespace GestaoArtigos.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
+
     public partial class tb_utilizadores
     {
         public long codigo { get; set; }
+
+        [DisplayName("Utilizador")]
+        [Required(ErrorMessage = "Este campo é obrigatório!")]
         public string utilizador { get; set; }
+
+        [DisplayName("Password")]
+        [DataType(DataType.Password)]
+        [Required(ErrorMessage = "Este campo é obrigatório!")]
         public string password { get; set; }
         public string nome { get; set; }
         public System.DateTime data_criacao { get; set; }
