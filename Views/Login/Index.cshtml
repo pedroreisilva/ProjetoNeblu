@@ -9,60 +9,53 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Login</title>
-    <style>
-         #login-div {
-            position:absolute;
-            left:40%;
-            top:40%;
-            border:1px solid #ccc;
-            padding:10px 10px;
-        }
-         .field-validation-error{
-             color:red;
-         }
-    </style>
+    <link rel="stylesheet" type="text/css" href="~/Content/login.css">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a81368914c.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
 </head>
 <body>
-    <div id="login-div">
-        @using (Html.BeginForm("Authorise", "Login", FormMethod.Post))
-        {
-            <table>
-                <tr>
-                    <td></td>
-                    <td style="text-decoration:underline">Login</td>
-                </tr>
-                <tr>
-                    <td>@Html.LabelFor(model => model.utilizador)</td>
-                    <td>@Html.EditorFor(model => model.utilizador)</td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td>@Html.ValidationMessageFor(model => model.utilizador)</td>
-                </tr>
-                <tr>
-                    <td>@Html.LabelFor(model => model.password)</td>
-                    <td>@Html.EditorFor(model => model.password)</td>
-                </tr>
-                <tr>
-                    <td colspan="2">
-                        <label class="field-validation-error">@ViewBag.Error</label>
-                    </td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td>@Html.ValidationMessageFor(model => model.password)</td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td>
-                        <input type="submit" value="Login" />
-                    </td>
-                </tr>
-            </table>
-        }
-        <script src="~/Scripts/jquery-3.4.1.js"></script>
-        <script src="~/Scripts/jquery.validate.min.js"></script>
-        <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
-    </div>
+    
+        <img class="wave" src="~/Content/img/wave.png">
+        <div class="container">
+            <div class="login-content">
+                <img src="~/Content/img/logo_only.png">
+                @using (Html.BeginForm("Authorise", "Login", FormMethod.Post))
+                {
+                    <form action="/Necessidades">
+                        <div class="input-div one">
+                            <div class="i">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <div class="div">
+                                @Html.EditorFor(model => model.utilizador, new { htmlAttributes = new { placeholder = "Username" } })
+                            </div>
+                        </div>
+                        <div class="valid-red">
+                            @Html.ValidationMessageFor(model => model.utilizador, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="input-div pass">
+                            <div class="i">
+                                <i class="fas fa-lock"></i>
+                            </div>
+                            <div class="div">
+                                @Html.PasswordFor(model => model.password, new { @class = "form-control", placeholder = "Password" })
+                            </div>
+                        </div>
+                        <div class="valid-red">
+                            @Html.ValidationMessageFor(model => model.password, "", new { @class = "text-danger" })
+                            <label class="field-validation-error">@ViewBag.Error</label>
+                            </div>
+                            <input type="submit" class="btn" value="Login">
+                    </form>
+                }
+            </div>
+        </div>
+    <script src="~/Scripts/jquery-3.4.1.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/main.js"></script>
+
 </body>
 </html>
