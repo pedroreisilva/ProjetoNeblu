@@ -28,6 +28,12 @@ namespace GestaoArtigos.Controllers
                 }
                 else
                 {
+                    tb_utilizadores userProfile = db.tb_utilizadores.SingleOrDefault(x => x.utilizador == user.utilizador);
+                    userProfile.data_ultimo_acesso = DateTime.Now;
+                    db.Entry(userProfile).State = System.Data.Entity.EntityState.Modified;
+                    db.SaveChanges();
+
+                    user.data_ultimo_acesso = DateTime.Now; 
                     Session["codigo"] = user.codigo;
                     Session["utilizador"] = user.utilizador;
                     return RedirectToAction("Index", "Necessidades");
