@@ -28,9 +28,9 @@ namespace GestaoArtigos.Controllers
                 }
                 else
                 {
-                    tb_utilizadores userProfile = db.tb_utilizadores.SingleOrDefault(x => x.utilizador == user.utilizador);
-                    userProfile.data_ultimo_acesso = DateTime.Now;
-                    db.Entry(userProfile).State = System.Data.Entity.EntityState.Modified;
+                    tb_utilizadores lastLogin = db.tb_utilizadores.SingleOrDefault(x => x.utilizador == user.utilizador);
+                    lastLogin.data_ultimo_acesso = DateTime.Now;
+                    db.Entry(lastLogin).State = System.Data.Entity.EntityState.Modified;
                     db.SaveChanges();
 
                     user.data_ultimo_acesso = DateTime.Now; 
