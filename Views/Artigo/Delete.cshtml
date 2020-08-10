@@ -3,6 +3,10 @@
 
 @{
     ViewBag.Title = "Delete";
+    if (Session["codigo"] == null)
+    {
+        Response.Redirect("Login");
+    }
 }
 <p>
     <h3>Tem a certeza que deseja eliminar o artigo ?</h3>

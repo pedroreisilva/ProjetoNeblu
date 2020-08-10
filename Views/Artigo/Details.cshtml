@@ -3,6 +3,10 @@
 
 @{
     ViewBag.Title = "Details";
+    if (Session["codigo"] == null)
+    {
+        Response.Redirect("Login");
+    }
 }
 
 

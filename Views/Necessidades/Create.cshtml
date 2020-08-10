@@ -3,6 +3,10 @@
 
 @{
     ViewBag.Title = "Create";
+    if (Session["codigo"] == null)
+    {
+        Response.Redirect("Login");
+    }
 }
 
 

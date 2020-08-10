@@ -10,7 +10,6 @@ namespace GestaoArtigos.Controllers
     public class LoginController : Controller
     {
         // GET: Login
-        [AllowAnonymous]
         public ActionResult Index()
         {
             return View();
@@ -29,8 +28,9 @@ namespace GestaoArtigos.Controllers
                 }
                 else
                 {
+                    Session["codigo"] = user.codigo;
+                    Session["utilizador"] = user.utilizador;
                     return RedirectToAction("Index", "Necessidades");
-
                 }
             }
         }

@@ -3,6 +3,10 @@
 
 @{
     ViewBag.Title = "Edit";
+    if (Session["codigo"] == null)
+    {
+        Response.Redirect("Login");
+    }
 }
 
 
