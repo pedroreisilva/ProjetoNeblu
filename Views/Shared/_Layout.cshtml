@@ -56,5 +56,13 @@
     
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+
+<script>
+    setTimeout(function()
+    {
+        window.location.href = "/";
+    }, 1 * 60 * 1000); // 20 mins * 60 sec/min * 1000 ms/sec.
+</script>
+
 </body>
 </html>
