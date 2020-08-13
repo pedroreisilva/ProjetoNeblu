@@ -45,6 +45,7 @@
                         </div>
                         <div class="valid-red">
                             @Html.ValidationMessageFor(model => model.password, "", new { @class = "text-danger" })
+                            <br />
                             <label class="field-validation-error">@ViewBag.Error</label>
                             </div>
                             <input type="submit" class="btn" value="Login">
