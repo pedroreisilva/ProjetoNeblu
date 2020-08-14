@@ -1,5 +1,7 @@
 ﻿@model GestaoArtigos.Models.NebluViewModel
 <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<link href="~/Content/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+
 
 @{
     ViewBag.Title = "Create";
@@ -43,20 +45,21 @@
                                             <th>
                                                 Descrição
                                             </th>
+                                            <th></th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach (var item in Model.artigosModel)
-                                        {
-                                            <tr>
-                                                <td>
-                                                    @Html.DisplayFor(modelItem => item.referencia)
-                                                </td>
-                                                <td>
-                                                    @Html.DisplayFor(modelItem => item.descricao)
-                                                </td>
-                                            </tr>
-                                        }
+                                        <tr>
+                                            <td>
+                                                @Html.DisplayFor(model => model.necessidadesModel.quantidade_atual)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(model => model.necessidadesModel.quantidade_atual)
+                                            </td>
+                                            <td>
+                                                @Html.ActionLink("Selecionar", "Select")
+                                            </td>
+                                        </tr>
                                     </tbody>
                                 </table>
                             </div>
@@ -116,4 +119,10 @@
 
 <script>
     $('#classModal').modal('show')
+</script>
+
+<script>
+    $(document).ready(function () {
+        $('#example').DataTable();
+    });
 </script>
