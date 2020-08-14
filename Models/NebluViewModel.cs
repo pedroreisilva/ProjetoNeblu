@@ -7,7 +7,8 @@ namespace GestaoArtigos.Models
 {
     public class NebluViewModel
     {
-        public tb_artigos artigos { get; set; }
-        public tb_necessidades necessidades { get; set; }
+        public List<tb_artigos> artigosModel { get; set; }
+        public tb_necessidades necessidadesModel { get; set; }
+
     }
 }
