@@ -30,7 +30,14 @@ namespace GestaoArtigos.Controllers
         // GET: Necessidades/Create
         public ActionResult Create()
         {
-            return View();
+            using (DbModels dbModel = new DbModels())
+            {
+                return View(new NebluViewModel()
+                {
+                    artigosModel = dbModel.tb_artigos.ToList(),
+                    necessidadesModel = new tb_necessidades()
+                });
+            }
         }
 
         // POST: Necessidades/Create

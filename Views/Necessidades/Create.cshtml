@@ -51,16 +51,20 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-
-                                        <tr>
-                                            <td>
-                                                AAAAAAAAAAAAA
-                                            </td>
-                                            <td>
-                                                32424343424233
-                                            </td>
-                                        </tr>
-
+                                        @foreach (var item in Model.artigosModel)
+                                        {
+                                            <tr>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.referencia)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.descricao)
+                                                </td>
+                                                <td>
+                                                    @Html.ActionLink("Selecionar", "Select", new { @class = "btn btn-warning" })
+                                                </td>
+                                            </tr>
+                                        }
                                     </tbody>
                                 </table>
                             </div>
