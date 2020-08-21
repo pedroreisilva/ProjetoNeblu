@@ -17,10 +17,8 @@ namespace GestaoArtigos.Models
     {
         [Required]
         public int codigo { get; set; }
-
-        [Required(ErrorMessage = "Introduza o número do artigo!")]
-        [Display(Name = "ID do artigo")]
-        [Range(1, 9999999, ErrorMessage = "{0} deve estar contido entre {1} e {2}.")]
+        
+        [Required]
         public int codigo_artigo { get; set; }
         
         [Display(Name = "Quantidade atual")]

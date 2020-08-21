@@ -3,6 +3,7 @@ using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Web.Mvc;
+using System.Web.Services.Description;
 using GestaoArtigos.Models;
 
 namespace GestaoArtigos.Controllers
@@ -41,18 +42,16 @@ namespace GestaoArtigos.Controllers
         }
 
         // POST: Necessidades/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        public ActionResult Create(tb_necessidades necessidadeModel)
+        public ActionResult Create(tb_necessidades necessidadeModel, tb_artigos artigoModel)
         {
             try
             {
                 using (DbModels dbModel = new DbModels())
                 {
-                    if (dbModel.tb_necessidades.Any(p => p.codigo_artigo == necessidadeModel.codigo_artigo))
+                    if (dbModel.tb_necessidades.Any(p => p.codigo_artigo == artigoModel.codigo))
                     {
-                        ViewBag.ErrorMessage = "A referência já existe!";
+                        ViewBag.ErrorMessage = "O artigo já está listado!";
                         return View();
                     }
                     necessidadeModel.data_criado = DateTime.Now;
