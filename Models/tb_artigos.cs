@@ -41,7 +41,7 @@ namespace GestaoArtigos.Models
 
         [Required]
         public int id_utilizador { get; set; }
-    
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tb_necessidades> tb_necessidades { get; set; }
         public virtual tb_utilizadores tb_utilizadores { get; set; }

@@ -37,14 +37,8 @@ namespace GestaoArtigos.Models
 
         [Required]
         public int id_utilizador { get; set; }
-    
+
         public virtual tb_artigos tb_artigos { get; set; }
         public virtual tb_utilizadores tb_utilizadores { get; set; }
     }
-}
-public enum Estado
-{
-    Novo,
-    Pendente,
-    Concluido
 }

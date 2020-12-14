@@ -12,6 +12,11 @@ namespace GestaoArtigos.Controllers
         // GET: Login
         public ActionResult Index()
         {
+            if (Session["id_utilizador"] != null)
+            {
+                Response.Redirect("Necessidades");
+            }
+
             return View();
         }
 
@@ -30,12 +35,13 @@ namespace GestaoArtigos.Controllers
                 {
                     tb_utilizadores lastLogin = db.tb_utilizadores.SingleOrDefault(x => x.utilizador == user.utilizador);
                     lastLogin.data_ultimo_acesso = DateTime.Now;
+                    user.data_ultimo_acesso = DateTime.Now; 
                     db.Entry(lastLogin).State = System.Data.Entity.EntityState.Modified;
                     db.SaveChanges();
 
-                    user.data_ultimo_acesso = DateTime.Now; 
-                    Session["codigo"] = user.id_utilizador;
+                    Session["id_utilizador"] = user.id_utilizador;
                     Session["utilizador"] = user.utilizador;
+
                     return RedirectToAction("Index", "Necessidades");
                 }
             }

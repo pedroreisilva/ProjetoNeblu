@@ -22,7 +22,8 @@ namespace GestaoArtigos.Models
             this.tb_artigos = new HashSet<tb_artigos>();
             this.tb_necessidades = new HashSet<tb_necessidades>();
         }
-    
+
+        [Required]
         public int id_utilizador { get; set; }
 
         [DisplayName("Utilizador")]
@@ -38,7 +39,7 @@ namespace GestaoArtigos.Models
         public System.DateTime data_ultimo_acesso { get; set; }
         public string bloqueado { get; set; }
         public short numero_tentativas { get; set; }
-    
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tb_artigos> tb_artigos { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

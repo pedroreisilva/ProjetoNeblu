@@ -34,7 +34,7 @@ namespace GestaoArtigos.Controllers
 
         // POST: Artigo/Create
         [HttpPost]
-        public ActionResult Create(tb_artigos artigoModel)
+        public ActionResult Create(tb_artigos artigoModel, tb_utilizadores user)
         {
             try
             {
@@ -47,6 +47,7 @@ namespace GestaoArtigos.Controllers
                     }
                     artigoModel.data_criado = DateTime.Now;
                     artigoModel.data_alterado = DateTime.Now;
+                    artigoModel.id_utilizador = System.Diagnostics.Process.GetCurrentProcess().SessionId;
                     dbModel.tb_artigos.Add(artigoModel);
                     dbModel.SaveChanges();
                 }

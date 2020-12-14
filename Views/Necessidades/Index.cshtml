@@ -5,7 +5,7 @@
 
 @{
     ViewBag.Title = "Index";
-    if(Session["codigo"] == null)
+    if(Session["id_utilizador"] == null)
     {
         Response.Redirect("Login");
     }

@@ -3,7 +3,7 @@
 
 @{
     ViewBag.Title = "Create";
-    if (Session["codigo"] == null)
+    if (Session["id_utilizador"] == null)
     {
         Response.Redirect("Login");
     }
@@ -41,8 +41,7 @@
         <div class="form-group">
             <label class="control-label col-sm-2">Nº de utilizador</label>
             <div class="col-md-10">
-                @Html.EditorFor(model => model.id_utilizador, new { htmlAttributes = new { @class = "form-control", @maxlength = "11" } })
-                @Html.ValidationMessageFor(model => model.id_utilizador, "", new { @class = "text-danger", @type = "number" })
+                @Html.DisplayFor(model => model.id_utilizador)
             </div>
         </div>
 
