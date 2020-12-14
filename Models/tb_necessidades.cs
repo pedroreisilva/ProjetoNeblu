@@ -11,43 +11,17 @@ namespace GestaoArtigos.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class tb_necessidades
     {
-        [Required]
         public int codigo { get; set; }
-        
-        [Required]
         public int codigo_artigo { get; set; }
-        
-        [Display(Name = "Quantidade atual")]
-        [Range(1, 9999999, ErrorMessage = "{0} deve estar contido entre {1} e {2}.")]
-        [Required(ErrorMessage = "Introduza a quantidade atual!")]
         public double quantidade_atual { get; set; }
-
-        [Required]
         public string estado { get; set; }
-
-        [Required]
         public System.DateTime data_criado { get; set; }
-
-        [Required]
         public System.DateTime data_alterado { get; set; }
-
-        [Required(ErrorMessage = "Introduza o seu número de utilizador!")]
-        [Display(Name = "Número de utilizador")]
-        [Range(1, 9999999, ErrorMessage = "{0} deve estar contido entre {1} e {2}.")]
         public int codigo_utilizador { get; set; }
-
     
         public virtual tb_artigos tb_artigos { get; set; }
     }
-}
-
-public enum Estado
-{
-    Novo,
-    Pendente,
-    Concluido
 }

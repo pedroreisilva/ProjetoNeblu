@@ -11,8 +11,7 @@ namespace GestaoArtigos.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class tb_artigos
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -20,28 +19,12 @@ namespace GestaoArtigos.Models
         {
             this.tb_necessidades = new HashSet<tb_necessidades>();
         }
-
-        [Required]
+    
         public int codigo { get; set; }
-
-        [Required(ErrorMessage = "Introduza a referência do artigo!")]
-        [RegularExpression(@"^[a-zA-Z0-9]+$", ErrorMessage = "Insira apenas caracteres alfanúmericos!")]
-        [StringLength(11, ErrorMessage = "A referência deve ter um máximo de {1} caracteres")]
         public string referencia { get; set; }
-
-        [Required(ErrorMessage = "Introduza uma descrição para o artigo!")]
-        [StringLength(30, ErrorMessage = "A descrição deve ter entre {2} a {1} caracteres", MinimumLength = 5)]
         public string descricao { get; set; }
-
-        [Required]
         public System.DateTime data_criado { get; set; }
-        
-        [Required]
         public System.DateTime data_alterado { get; set; }
-
-        [Required(ErrorMessage = "Introduza o seu número de utilizador!")]
-        [Display(Name = "Número de utilizador")]
-        [Range(1, 99999999999, ErrorMessage = "{0} deve estar contido entre {1} e {2}.")]
         public int codigo_utilizador { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
