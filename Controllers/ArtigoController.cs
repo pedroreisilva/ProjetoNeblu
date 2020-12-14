@@ -22,7 +22,7 @@ namespace GestaoArtigos.Controllers
         {
             using (DbModels dbModel = new DbModels())
             {
-                return View(dbModel.tb_artigos.Where(x => x.codigo == id).FirstOrDefault());
+                return View(dbModel.tb_artigos.Where(x => x.id_artigo == id).FirstOrDefault());
             }
         }
 
@@ -65,7 +65,7 @@ namespace GestaoArtigos.Controllers
             tb_artigos artigoModel = new tb_artigos();  
             using (DbModels dbModel = new DbModels())
             {
-                artigoModel = dbModel.tb_artigos.Where(x => x.codigo == id).FirstOrDefault();
+                artigoModel = dbModel.tb_artigos.Where(x => x.id_artigo == id).FirstOrDefault();
             }
             return View(artigoModel);
         }
@@ -96,7 +96,7 @@ namespace GestaoArtigos.Controllers
         {
             using (DbModels dbModel = new DbModels())
             {
-                return View(dbModel.tb_artigos.Where(x => x.codigo == id).FirstOrDefault());
+                return View(dbModel.tb_artigos.Where(x => x.id_artigo == id).FirstOrDefault());
             }
         }
 
@@ -109,7 +109,7 @@ namespace GestaoArtigos.Controllers
                 // TODO: Add delete logic here
                 using (DbModels dbModel = new DbModels())
                 {
-                    tb_artigos artigo = dbModel.tb_artigos.Where(x => x.codigo == id).FirstOrDefault();
+                    tb_artigos artigo = dbModel.tb_artigos.Where(x => x.id_artigo == id).FirstOrDefault();
                     dbModel.tb_artigos.Remove(artigo);
                     dbModel.SaveChanges();                
                 }

@@ -11,16 +11,37 @@ namespace GestaoArtigos.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
+
     public partial class tb_utilizadores
     {
-        public long codigo { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public tb_utilizadores()
+        {
+            this.tb_artigos = new HashSet<tb_artigos>();
+            this.tb_necessidades = new HashSet<tb_necessidades>();
+        }
+    
+        public int id_utilizador { get; set; }
+
+        [DisplayName("Utilizador")]
+        [Required(ErrorMessage = "Este campo é obrigatório!")]
         public string utilizador { get; set; }
+
+        [DisplayName("Password")]
+        [DataType(DataType.Password)]
+        [Required(ErrorMessage = "Este campo é obrigatório!")]
         public string password { get; set; }
-        public string nome { get; set; }
+        public string descrição { get; set; }
         public System.DateTime data_criacao { get; set; }
         public System.DateTime data_ultimo_acesso { get; set; }
         public string bloqueado { get; set; }
         public short numero_tentativas { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tb_artigos> tb_artigos { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tb_necessidades> tb_necessidades { get; set; }
     }
 }

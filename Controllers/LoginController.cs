@@ -34,7 +34,7 @@ namespace GestaoArtigos.Controllers
                     db.SaveChanges();
 
                     user.data_ultimo_acesso = DateTime.Now; 
-                    Session["codigo"] = user.codigo;
+                    Session["codigo"] = user.id_utilizador;
                     Session["utilizador"] = user.utilizador;
                     return RedirectToAction("Index", "Necessidades");
                 }

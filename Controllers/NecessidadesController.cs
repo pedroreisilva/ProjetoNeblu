@@ -24,7 +24,7 @@ namespace GestaoArtigos.Controllers
         {
             using (DbModels dbModel = new DbModels())
             {
-                return View(dbModel.tb_necessidades.Where(x => x.codigo == id).FirstOrDefault());
+                return View(dbModel.tb_necessidades.Where(x => x.id_necessidade == id).FirstOrDefault());
             }
         }
 
@@ -49,7 +49,7 @@ namespace GestaoArtigos.Controllers
             {
                 using (DbModels dbModel = new DbModels())
                 {
-                    if (dbModel.tb_necessidades.Any(p => p.codigo_artigo == artigoModel.codigo))
+                    if (dbModel.tb_necessidades.Any(p => p.id_artigo == artigoModel.id_artigo))
                     {
                         ViewBag.ErrorMessage = "O artigo já está listado!";
                         return View();
@@ -74,7 +74,7 @@ namespace GestaoArtigos.Controllers
             tb_necessidades necessidadeModel = new tb_necessidades();
             using (DbModels dbModel = new DbModels())
             {
-                necessidadeModel = dbModel.tb_necessidades.Where(x => x.codigo == id).FirstOrDefault();
+                necessidadeModel = dbModel.tb_necessidades.Where(x => x.id_necessidade == id).FirstOrDefault();
             }
             return View(necessidadeModel);
         }
@@ -108,7 +108,7 @@ namespace GestaoArtigos.Controllers
         {
             using (DbModels dbModel = new DbModels())
             {
-                return View(dbModel.tb_necessidades.Where(x => x.codigo == id).FirstOrDefault());
+                return View(dbModel.tb_necessidades.Where(x => x.id_necessidade == id).FirstOrDefault());
             }
         }
 
@@ -121,7 +121,7 @@ namespace GestaoArtigos.Controllers
                 // TODO: Add delete logic here
                 using (DbModels dbModel = new DbModels())
                 {
-                    tb_necessidades necessidade = dbModel.tb_necessidades.Where(x => x.codigo == id).FirstOrDefault();
+                    tb_necessidades necessidade = dbModel.tb_necessidades.Where(x => x.id_necessidade == id).FirstOrDefault();
                     dbModel.tb_necessidades.Remove(necessidade);
                     dbModel.SaveChanges();
                 }

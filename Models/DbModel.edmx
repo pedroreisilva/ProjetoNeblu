@@ -7,35 +7,35 @@
     <Schema Namespace="MvcCrudModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.5" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="tb_artigos">
           <Key>
-            <PropertyRef Name="codigo" />
+            <PropertyRef Name="id_artigo" />
           </Key>
-          <Property Name="codigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_artigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="referencia" Type="varchar" MaxLength="50" />
           <Property Name="descricao" Type="varchar" MaxLength="200" Nullable="false" />
           <Property Name="data_criado" Type="datetime" Precision="0" Nullable="false" />
           <Property Name="data_alterado" Type="datetime" Precision="0" Nullable="false" />
-          <Property Name="codigo_utilizador" Type="int" Nullable="false" />
+          <Property Name="id_utilizador" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="tb_necessidades">
           <Key>
-            <PropertyRef Name="codigo" />
+            <PropertyRef Name="id_necessidade" />
           </Key>
-          <Property Name="codigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="codigo_artigo" Type="int" Nullable="false" />
+          <Property Name="id_necessidade" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_artigo" Type="int" Nullable="false" />
           <Property Name="quantidade_atual" Type="double" Nullable="false" />
           <Property Name="estado" Type="enum" Nullable="false" />
           <Property Name="data_criado" Type="datetime" Precision="0" Nullable="false" />
           <Property Name="data_alterado" Type="datetime" Precision="0" Nullable="false" />
-          <Property Name="codigo_utilizador" Type="int" Nullable="false" />
+          <Property Name="id_utilizador" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="tb_utilizadores">
           <Key>
-            <PropertyRef Name="codigo" />
+            <PropertyRef Name="id_utilizador" />
           </Key>
-          <Property Name="codigo" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_utilizador" Type="int" Nullable="false" />
           <Property Name="utilizador" Type="varchar" MaxLength="255" Nullable="false" />
           <Property Name="password" Type="varchar" MaxLength="128" />
-          <Property Name="nome" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="descrição" Type="varchar" MaxLength="255" Nullable="false" />
           <Property Name="data_criacao" Type="datetime" Precision="0" Nullable="false" />
           <Property Name="data_ultimo_acesso" Type="datetime" Precision="0" Nullable="false" />
           <Property Name="bloqueado" Type="enum" Nullable="false" />
@@ -46,10 +46,34 @@
           <End Role="tb_necessidades" Type="Self.tb_necessidades" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="tb_artigos">
-              <PropertyRef Name="codigo" />
+              <PropertyRef Name="id_artigo" />
             </Principal>
             <Dependent Role="tb_necessidades">
-              <PropertyRef Name="codigo_artigo" />
+              <PropertyRef Name="id_artigo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tb_necessidades_tb_utilizadores">
+          <End Role="tb_utilizadores" Type="Self.tb_utilizadores" Multiplicity="1" />
+          <End Role="tb_necessidades" Type="Self.tb_necessidades" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_utilizadores">
+              <PropertyRef Name="id_utilizador" />
+            </Principal>
+            <Dependent Role="tb_necessidades">
+              <PropertyRef Name="id_utilizador" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_userArtigo">
+          <End Role="tb_utilizadores" Type="Self.tb_utilizadores" Multiplicity="1" />
+          <End Role="tb_artigos" Type="Self.tb_artigos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_utilizadores">
+              <PropertyRef Name="id_utilizador" />
+            </Principal>
+            <Dependent Role="tb_artigos">
+              <PropertyRef Name="id_utilizador" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -61,6 +85,14 @@
             <End Role="tb_artigos" EntitySet="tb_artigos" />
             <End Role="tb_necessidades" EntitySet="tb_necessidades" />
           </AssociationSet>
+          <AssociationSet Name="FK_tb_necessidades_tb_utilizadores" Association="Self.FK_tb_necessidades_tb_utilizadores">
+            <End Role="tb_utilizadores" EntitySet="tb_utilizadores" />
+            <End Role="tb_necessidades" EntitySet="tb_necessidades" />
+          </AssociationSet>
+          <AssociationSet Name="FK_userArtigo" Association="Self.FK_userArtigo">
+            <End Role="tb_utilizadores" EntitySet="tb_utilizadores" />
+            <End Role="tb_artigos" EntitySet="tb_artigos" />
+          </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -68,63 +100,99 @@
       <Schema Namespace="MvcCrudModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="tb_artigos">
           <Key>
-            <PropertyRef Name="codigo" />
+            <PropertyRef Name="id_artigo" />
           </Key>
-          <Property Name="codigo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_artigo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns="http://schemas.microsoft.com/ado/2009/11/edm" />
           <Property Name="referencia" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="descricao" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="data_criado" Type="DateTime" Nullable="false" />
           <Property Name="data_alterado" Type="DateTime" Nullable="false" />
-          <Property Name="codigo_utilizador" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="tb_necessidades" Relationship="MvcCrudModel.FK_tb_necessidades_tb_artigos" FromRole="tb_artigos" ToRole="tb_necessidades" />
+          <Property Name="id_utilizador" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tb_necessidades" Relationship="MvcCrudModel.FK_tb_necessidades_tb_artigos1" FromRole="tb_artigos" ToRole="tb_necessidades" />
+          <NavigationProperty Name="tb_utilizadores" Relationship="MvcCrudModel.FK_userArtigo" FromRole="tb_artigos" ToRole="tb_utilizadores" />
         </EntityType>
         <EntityContainer Name="DbModels" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="tb_artigos" EntityType="Self.tb_artigos" />
           <EntitySet Name="tb_necessidades" EntityType="MvcCrudModel.tb_necessidades" />
-          <AssociationSet Name="FK_tb_necessidades_tb_artigos" Association="MvcCrudModel.FK_tb_necessidades_tb_artigos">
+          <EntitySet Name="tb_utilizadores" EntityType="MvcCrudModel.tb_utilizadores" />
+          <AssociationSet Name="FK_tb_necessidades_tb_artigos1" Association="MvcCrudModel.FK_tb_necessidades_tb_artigos1">
             <End Role="tb_artigos" EntitySet="tb_artigos" />
             <End Role="tb_necessidades" EntitySet="tb_necessidades" />
           </AssociationSet>
-          <EntitySet Name="tb_utilizadores" EntityType="MvcCrudModel.tb_utilizadores" />
+          <AssociationSet Name="FK_userArtigo" Association="MvcCrudModel.FK_userArtigo">
+            <End Role="tb_utilizadores" EntitySet="tb_utilizadores" />
+            <End Role="tb_artigos" EntitySet="tb_artigos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tb_necessidades_tb_utilizadores" Association="MvcCrudModel.FK_tb_necessidades_tb_utilizadores">
+            <End Role="tb_utilizadores" EntitySet="tb_utilizadores" />
+            <End Role="tb_necessidades" EntitySet="tb_necessidades" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="tb_necessidades">
           <Key>
-            <PropertyRef Name="codigo" />
+            <PropertyRef Name="id_necessidade" />
           </Key>
-          <Property Name="codigo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="codigo_artigo" Type="Int32" Nullable="false" />
+          <Property Name="id_artigo" Type="Int32" Nullable="false" />
           <Property Name="quantidade_atual" Type="Double" Nullable="false" />
           <Property Name="estado" Type="String" Nullable="false" MaxLength="65532" FixedLength="false" Unicode="false" />
           <Property Name="data_criado" Type="DateTime" Nullable="false" />
           <Property Name="data_alterado" Type="DateTime" Nullable="false" />
-          <Property Name="codigo_utilizador" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="tb_artigos" Relationship="MvcCrudModel.FK_tb_necessidades_tb_artigos" FromRole="tb_necessidades" ToRole="tb_artigos" />
+          <Property Name="id_necessidade" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_utilizador" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tb_artigos" Relationship="MvcCrudModel.FK_tb_necessidades_tb_artigos1" FromRole="tb_necessidades" ToRole="tb_artigos" />
+          <NavigationProperty Name="tb_utilizadores" Relationship="MvcCrudModel.FK_tb_necessidades_tb_utilizadores" FromRole="tb_necessidades" ToRole="tb_utilizadores" />
         </EntityType>
-        <Association Name="FK_tb_necessidades_tb_artigos">
-          <End Type="MvcCrudModel.tb_artigos" Role="tb_artigos" Multiplicity="1" />
-          <End Type="MvcCrudModel.tb_necessidades" Role="tb_necessidades" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tb_artigos">
-              <PropertyRef Name="codigo" />
-            </Principal>
-            <Dependent Role="tb_necessidades">
-              <PropertyRef Name="codigo_artigo" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityType Name="tb_utilizadores">
           <Key>
-            <PropertyRef Name="codigo" />
+            <PropertyRef Name="id_utilizador" />
           </Key>
-          <Property Name="codigo" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_utilizador" Type="Int32" Nullable="false" />
           <Property Name="utilizador" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="password" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
-          <Property Name="nome" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="descrição" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="data_criacao" Type="DateTime" Nullable="false" />
           <Property Name="data_ultimo_acesso" Type="DateTime" Nullable="false" />
           <Property Name="bloqueado" Type="String" Nullable="false" MaxLength="65532" FixedLength="false" Unicode="false" />
           <Property Name="numero_tentativas" Type="Int16" Nullable="false" />
+          <NavigationProperty Name="tb_artigos" Relationship="MvcCrudModel.FK_userArtigo" FromRole="tb_utilizadores" ToRole="tb_artigos" />
+          <NavigationProperty Name="tb_necessidades" Relationship="MvcCrudModel.FK_tb_necessidades_tb_utilizadores" FromRole="tb_utilizadores" ToRole="tb_necessidades" />
         </EntityType>
+        <Association Name="FK_tb_necessidades_tb_artigos1">
+          <End Type="MvcCrudModel.tb_artigos" Role="tb_artigos" Multiplicity="1" />
+          <End Type="MvcCrudModel.tb_necessidades" Role="tb_necessidades" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_artigos">
+              <PropertyRef Name="id_artigo" />
+            </Principal>
+            <Dependent Role="tb_necessidades">
+              <PropertyRef Name="id_artigo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_userArtigo">
+          <End Type="MvcCrudModel.tb_utilizadores" Role="tb_utilizadores" Multiplicity="1" />
+          <End Type="MvcCrudModel.tb_artigos" Role="tb_artigos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_utilizadores">
+              <PropertyRef Name="id_utilizador" />
+            </Principal>
+            <Dependent Role="tb_artigos">
+              <PropertyRef Name="id_utilizador" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tb_necessidades_tb_utilizadores">
+          <End Type="MvcCrudModel.tb_utilizadores" Role="tb_utilizadores" Multiplicity="1" />
+          <End Type="MvcCrudModel.tb_necessidades" Role="tb_necessidades" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_utilizadores">
+              <PropertyRef Name="id_utilizador" />
+            </Principal>
+            <Dependent Role="tb_necessidades">
+              <PropertyRef Name="id_utilizador" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -134,40 +202,40 @@
           <EntitySetMapping Name="tb_artigos">
             <EntityTypeMapping TypeName="MvcCrudModel.tb_artigos">
               <MappingFragment StoreEntitySet="tb_artigos">
-                <ScalarProperty Name="codigo" ColumnName="codigo" />
+                <ScalarProperty Name="id_utilizador" ColumnName="id_utilizador" />
+                <ScalarProperty Name="id_artigo" ColumnName="id_artigo" />
                 <ScalarProperty Name="referencia" ColumnName="referencia" />
                 <ScalarProperty Name="descricao" ColumnName="descricao" />
                 <ScalarProperty Name="data_criado" ColumnName="data_criado" />
                 <ScalarProperty Name="data_alterado" ColumnName="data_alterado" />
-                <ScalarProperty Name="codigo_utilizador" ColumnName="codigo_utilizador" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tb_necessidades">
             <EntityTypeMapping TypeName="MvcCrudModel.tb_necessidades">
               <MappingFragment StoreEntitySet="tb_necessidades">
-                <ScalarProperty Name="codigo_utilizador" ColumnName="codigo_utilizador" />
+                <ScalarProperty Name="id_utilizador" ColumnName="id_utilizador" />
+                <ScalarProperty Name="id_artigo" ColumnName="id_artigo" />
+                <ScalarProperty Name="id_necessidade" ColumnName="id_necessidade" />
                 <ScalarProperty Name="data_alterado" ColumnName="data_alterado" />
                 <ScalarProperty Name="data_criado" ColumnName="data_criado" />
                 <ScalarProperty Name="estado" ColumnName="estado" />
                 <ScalarProperty Name="quantidade_atual" ColumnName="quantidade_atual" />
-                <ScalarProperty Name="codigo_artigo" ColumnName="codigo_artigo" />
-                <ScalarProperty Name="codigo" ColumnName="codigo" />
-              </MappingFragment>
+                </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tb_utilizadores">
             <EntityTypeMapping TypeName="MvcCrudModel.tb_utilizadores">
               <MappingFragment StoreEntitySet="tb_utilizadores">
+                <ScalarProperty Name="utilizador" ColumnName="utilizador" />
+                <ScalarProperty Name="descrição" ColumnName="descrição" />
+                <ScalarProperty Name="id_utilizador" ColumnName="id_utilizador" />
                 <ScalarProperty Name="numero_tentativas" ColumnName="numero_tentativas" />
                 <ScalarProperty Name="bloqueado" ColumnName="bloqueado" />
                 <ScalarProperty Name="data_ultimo_acesso" ColumnName="data_ultimo_acesso" />
                 <ScalarProperty Name="data_criacao" ColumnName="data_criacao" />
-                <ScalarProperty Name="nome" ColumnName="nome" />
                 <ScalarProperty Name="password" ColumnName="password" />
-                <ScalarProperty Name="utilizador" ColumnName="utilizador" />
-                <ScalarProperty Name="codigo" ColumnName="codigo" />
-              </MappingFragment>
+                </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
         </EntityContainerMapping>

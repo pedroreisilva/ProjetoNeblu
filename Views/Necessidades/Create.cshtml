@@ -28,7 +28,7 @@
                 </button>
 
                 <span class="id-label">
-                    @Html.DisplayFor(model => model.necessidadesModel.codigo_artigo, new { @class = "id-label" })
+                    @Html.DisplayFor(model => model.necessidadesModel.id_artigo, new { @class = "id-label" })
                 </span>
                 
                 <div id="classModal" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="classInfo" aria-hidden="true">
@@ -62,7 +62,7 @@
                                         {
                                             <tr>
                                                 <td>
-                                                    @Html.DisplayFor(modelItem => item.codigo)
+                                                    @Html.DisplayFor(modelItem => item.id_artigo)
                                                 </td>
                                                 <td>
                                                     @Html.DisplayFor(modelItem => item.referencia)
@@ -107,8 +107,8 @@
         <div class="form-group">
             <label class="control-label col-sm-2">Nº de utilizador</label>
             <div class="col-md-10">
-                @Html.EditorFor(model => model.necessidadesModel.codigo_utilizador, new { htmlAttributes = new { @class = "form-control", @maxlength = "8" } })
-                @Html.ValidationMessageFor(model => model.necessidadesModel.codigo_utilizador, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.necessidadesModel.id_utilizador, new { htmlAttributes = new { @class = "form-control", @maxlength = "8" } })
+                @Html.ValidationMessageFor(model => model.necessidadesModel.id_utilizador, "", new { @class = "text-danger" })
             </div>
         </div>
 
