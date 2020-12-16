@@ -39,9 +39,11 @@ namespace GestaoArtigos.Models
         [Required]
         public System.DateTime data_alterado { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Introduza o seu número de utilizador!")]
+        [Display(Name = "Número de utilizador")]
+        [Range(1, 99999999999, ErrorMessage = "{0} deve estar contido entre {1} e {2}.")]
         public int id_utilizador { get; set; }
-
+    
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tb_necessidades> tb_necessidades { get; set; }
         public virtual tb_utilizadores tb_utilizadores { get; set; }

@@ -15,6 +15,7 @@ namespace GestaoArtigos.Models
 
     public partial class tb_necessidades
     {
+
         [Required]
         public int id_necessidade { get; set; }
 
@@ -35,10 +36,18 @@ namespace GestaoArtigos.Models
         [Required]
         public System.DateTime data_alterado { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Introduza o seu número de utilizador!")]
+        [Display(Name = "Número de utilizador")]
+        [Range(1, 9999999, ErrorMessage = "{0} deve estar contido entre {1} e {2}.")]
         public int id_utilizador { get; set; }
-
+    
         public virtual tb_artigos tb_artigos { get; set; }
         public virtual tb_utilizadores tb_utilizadores { get; set; }
     }
+}
+public enum Estado
+{
+    Novo,
+    Pendente,
+    Concluido
 }

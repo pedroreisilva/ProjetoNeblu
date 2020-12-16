@@ -132,12 +132,12 @@
           <Key>
             <PropertyRef Name="id_necessidade" />
           </Key>
+          <Property Name="id_necessidade" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns="http://schemas.microsoft.com/ado/2009/11/edm" />
           <Property Name="id_artigo" Type="Int32" Nullable="false" />
           <Property Name="quantidade_atual" Type="Double" Nullable="false" />
           <Property Name="estado" Type="String" Nullable="false" MaxLength="65532" FixedLength="false" Unicode="false" />
           <Property Name="data_criado" Type="DateTime" Nullable="false" />
           <Property Name="data_alterado" Type="DateTime" Nullable="false" />
-          <Property Name="id_necessidade" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="id_utilizador" Type="Int32" Nullable="false" />
           <NavigationProperty Name="tb_artigos" Relationship="MvcCrudModel.FK_tb_necessidades_tb_artigos1" FromRole="tb_necessidades" ToRole="tb_artigos" />
           <NavigationProperty Name="tb_utilizadores" Relationship="MvcCrudModel.FK_tb_necessidades_tb_utilizadores" FromRole="tb_necessidades" ToRole="tb_utilizadores" />
