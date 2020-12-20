@@ -326,6 +326,8 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\main.js" />
+    <Content Include="Scripts\select.js" />
+    <Content Include="Scripts\showModal.js" />
     <Content Include="Scripts\timeoutAction.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">

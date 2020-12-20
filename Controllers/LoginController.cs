@@ -25,22 +25,44 @@ namespace GestaoArtigos.Controllers
         {
             using (DbModels db = new DbModels())
             {
-                var userDetail = db.tb_utilizadores.Where(x => x.utilizador == user.utilizador && x.password == user.password).FirstOrDefault();
-                if(userDetail == null)
+                tb_utilizadores lastLogin = db.tb_utilizadores.FirstOrDefault(x => x.utilizador == user.utilizador && x.password == user.password);
+                tb_utilizadores lastUser = db.tb_utilizadores.SingleOrDefault(x => x.utilizador == user.utilizador);
+                tb_utilizadores wrongPassword = db.tb_utilizadores.SingleOrDefault(x => x.utilizador == user.utilizador && x.password != user.password);
+
+                if (lastLogin == null)
                 {
-                    ViewBag.Error = "Utilizador ou password inválido!";
+                    if (wrongPassword != null) {
+                        lastUser.numero_tentativas++;
+                        db.SaveChanges();
+                        ViewBag.Error = "Password inválido!";
+
+                        if (lastUser.numero_tentativas >= 3)
+                        {
+                            lastUser.bloqueado = "true";
+                            db.SaveChanges();
+                            ViewBag.Error = "Excedeu o limite de tentativas, contacte o departamento de software!";
+                        }
+                    }
+                    else
+                    {
+                        ViewBag.Error = "Utilizador ou password inválido!";
+                    }
+
+                    return View("Index", user);
+                }
+                else if (lastUser.bloqueado == "true")
+                {
+                    ViewBag.Error = "Excedeu o limite de tentativas, contacte o departamento de software!";
                     return View("Index", user);
                 }
                 else
                 {
-                    tb_utilizadores lastLogin = db.tb_utilizadores.SingleOrDefault(x => x.utilizador == user.utilizador);
-                    lastLogin.data_ultimo_acesso = DateTime.Now;
-                    user.data_ultimo_acesso = DateTime.Now; 
-                    db.Entry(lastLogin).State = System.Data.Entity.EntityState.Modified;
+                    lastUser.data_ultimo_acesso = DateTime.Now;
+                    lastUser.data_ultimo_acesso = DateTime.Now;
+                    lastUser.numero_tentativas = 0;
+                    db.Entry(lastUser).State = System.Data.Entity.EntityState.Modified;
+                    Session["id_utilizador"] = lastUser.id_utilizador;
                     db.SaveChanges();
-
-                    Session["id_utilizador"] = user.id_utilizador;
-                    Session["utilizador"] = user.utilizador;
 
                     return RedirectToAction("Index", "Necessidades");
                 }

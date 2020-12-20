@@ -23,7 +23,7 @@ namespace GestaoArtigos.Models
         public int id_artigo { get; set; }
 
         [Display(Name = "Quantidade atual")]
-        [Range(1, 9999999, ErrorMessage = "{0} deve estar contido entre {1} e {2}.")]
+        [Range(0, 9999999, ErrorMessage = "{0} deve estar contido entre {1} e {2}.")]
         [Required(ErrorMessage = "Introduza a quantidade atual!")]
         public double quantidade_atual { get; set; }
 

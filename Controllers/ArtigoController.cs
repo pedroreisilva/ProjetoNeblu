@@ -40,6 +40,7 @@ namespace GestaoArtigos.Controllers
             {
                 using (DbModels dbModel = new DbModels())
                 {
+                    tb_utilizadores lastLogin = dbModel.tb_utilizadores.SingleOrDefault(x => x.utilizador == user.utilizador);
                     if (dbModel.tb_artigos.Any(p => p.referencia == artigoModel.referencia))
                     {
                         ViewBag.ErrorMessage = "A referência já existe!";
@@ -47,7 +48,6 @@ namespace GestaoArtigos.Controllers
                     }
                     artigoModel.data_criado = DateTime.Now;
                     artigoModel.data_alterado = DateTime.Now;
-                    artigoModel.id_utilizador = System.Diagnostics.Process.GetCurrentProcess().SessionId;
                     dbModel.tb_artigos.Add(artigoModel);
                     dbModel.SaveChanges();
                 }

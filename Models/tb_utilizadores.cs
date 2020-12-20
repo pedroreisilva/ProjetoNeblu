@@ -45,3 +45,8 @@ namespace GestaoArtigos.Models
         public virtual ICollection<tb_necessidades> tb_necessidades { get; set; }
     }
 }
+public enum bloqueado
+{
+    True,
+    False
+}
