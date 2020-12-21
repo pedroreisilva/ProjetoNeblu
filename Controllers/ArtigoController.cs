@@ -34,7 +34,7 @@ namespace GestaoArtigos.Controllers
 
         // POST: Artigo/Create
         [HttpPost]
-        public ActionResult Create(tb_artigos artigoModel, tb_utilizadores user)
+        public ActionResult Create(tb_artigos artigoModel)
         {
             try
             {

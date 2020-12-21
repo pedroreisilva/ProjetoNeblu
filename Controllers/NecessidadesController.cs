@@ -34,8 +34,7 @@ namespace GestaoArtigos.Controllers
             {
                 return View(new NebluViewModel()
                 {
-                    artigosModel = dbModel.tb_artigos.ToList(),
-                    necessidadesModel = new tb_necessidades()
+                    ArtigosModel = dbModel.tb_artigos.ToList()
                 });
             }
         }
@@ -55,6 +54,7 @@ namespace GestaoArtigos.Controllers
                     }
                     necessidadeModel.data_criado = DateTime.Now;
                     necessidadeModel.data_alterado = DateTime.Now;
+                    necessidadeModel.id_utilizador = (int)Session["id_utilizador"];
                     dbModel.tb_necessidades.Add(necessidadeModel);
                     dbModel.SaveChanges();
                 }
