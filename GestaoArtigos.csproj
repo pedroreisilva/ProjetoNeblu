@@ -291,7 +291,7 @@
     <Content Include="Content\jquery.dataTables.min.css" />
     <Content Include="Content\login.css" />
     <Content Include="Content\transition.css" />
-    <Content Include="Content\style.css" />
+    <Content Include="Content\navbar.css" />
     <Content Include="Content\styles.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -330,6 +330,7 @@
     <Content Include="Scripts\main.js" />
     <Content Include="Scripts\select.js" />
     <Content Include="Scripts\showModal.js" />
+    <Content Include="Scripts\toggleMenu.js" />
     <Content Include="Scripts\timeoutAction.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
