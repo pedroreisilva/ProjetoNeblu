@@ -290,6 +290,7 @@
     <Content Include="Content\img\logo_1.png" />
     <Content Include="Content\jquery.dataTables.min.css" />
     <Content Include="Content\login.css" />
+    <Content Include="Content\transition.css" />
     <Content Include="Content\style.css" />
     <Content Include="Content\styles.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
