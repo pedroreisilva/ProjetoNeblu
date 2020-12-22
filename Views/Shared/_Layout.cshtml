@@ -14,52 +14,88 @@
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
     <!-- CSS -->
     <link rel="stylesheet" href="~/Content/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link href="~/Content/styles.css" rel="stylesheet" />
-
-
+    <link href="~/Content/style.css" rel="stylesheet" />
 </head>
+
 <body>
-    <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
-        <div class="container">
-            <a href="/">
-                <img src="~/Content/img/logo-navbar.png"/>
-            </a>
 
-            <button class="navbar-toggler navbar-toggler-right text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                Menu
-                <i class="fas fa-bars"></i>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item mx-0 mx-lg-1">
-                        <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/Artigo">Artigos</a>
-                    </li>
-                    <li class="nav-item mx-0 mx-lg-1">
-                        <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/Necessidades">Necessidades</a>
-                    </li>
-                </ul>
-                <ul class="navbar-nav navbar-right ml-auto">
-                    <li class="nav-item mx-0 mx-lg-1">
-                        <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="@Url.Action("LogOut", "Login")">Logout</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-     
-    <br />
-
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - Sistema de Gestão de Artigos</p>
-        </footer>
+    <div class="navigation">
+        <ul>
+            <li>
+                <a href="https://neblu.pt">
+                    <span class="icon">
+                        <i class="fa fa-home" aria-hidden="true"></i>
+                    </span>
+                    <span class="title">Loja</span>
+                </a>
+            </li>
+            <li>
+                <a href="/Artigo">
+                    <span class="icon">
+                        <i class="fa fa-tags" aria-hidden="true"></i>
+                    </span>
+                    <span class="title">Artigos</span>
+                </a>
+            </li>
+            <li>
+                <a href="/Necessidades">
+                    <span class="icon">
+                        <i class="fa fa-truck" aria-hidden="true"></i>
+                    </span>
+                    <span class="title">Pedidos</span>
+                </a>
+            </li>
+            <li>
+                <a href="/Ajuda">
+                    <span class="icon">
+                        <i class="fa fa-question" aria-hidden="true"></i>
+                    </span>
+                    <span class="title">Ajuda</span>
+                </a>
+            </li>
+            <li class="signout">
+                <a href="@Url.Action("LogOut", "Login")">
+                    <span class="icon">
+                        <i class="fa fa-sign-out" aria-hidden="true"></i>
+                    </span>
+                    <span class="title">Terminar Sessão</span>
+                </a>
+            </li>
+        </ul>
     </div>
-    
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
-    <script src="~/Scripts/timeoutAction.js"></script>
+
+    <div class="topo">
+        <a href="/">
+            <img src="~/Content/img/logo-navbar.png" />
+        </a>
+    </div>
+
+        <div class="toggle" onclick="toggleMenu()"></div>
+
+        <br />
+
+        <div class="container body-content">
+            @RenderBody()
+            <hr />
+            <footer>
+                <p>&copy; @DateTime.Now.Year - Sistema de Gestão de Artigos</p>
+            </footer>
+        </div>
+
+        @Scripts.Render("~/bundles/bootstrap")
+        @RenderSection("scripts", required: false)
+        <script src="~/Scripts/timeoutAction.js"></script>
+
+        <script type="text/javascript">
+            function toggleMenu() {
+                let navigation = document.querySelector('.navigation');
+                let toggle = document.querySelector('.toggle');
+                navigation.classList.toggle('active');
+                toggle.classList.toggle('active');
+            }
+        </script>
 
 </body>
 </html>
