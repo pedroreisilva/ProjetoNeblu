@@ -49,7 +49,7 @@
                 </a>
             </li>
             <li>
-                <a href="/Ajuda">
+                <a href="/Help">
                     <span class="icon">
                         <i class="fa fa-question" aria-hidden="true"></i>
                     </span>
@@ -73,7 +73,6 @@
         </a>
     </div>
 
-    <div class="toggle" onclick="toggleMenu()"></div>
 
     <br />
 
@@ -88,8 +87,9 @@
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
 
-    <script src="~/Scripts/timeoutAction.js"></script>
+    <div class="toggle" onclick="toggleMenu()"></div>
     <script src="~/Scripts/toggleMenu.js"></script>
+    <script src="~/Scripts/timeoutAction.js"></script>
 
 </body>
 </html>

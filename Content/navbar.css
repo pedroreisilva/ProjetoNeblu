@@ -94,7 +94,7 @@ body {
     cursor: pointer;
 }
 
-.toggle:active
+.toggle.active
 {
     background: #0f7d67;
 }

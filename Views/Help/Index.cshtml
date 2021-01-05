@@ -1,0 +1,17 @@
+﻿<link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<link href="~/Content/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    ViewBag.Title = "Index";
+    if (Session["id_utilizador"] == null)
+    {
+        Response.Redirect("Login");
+    }
+}
+
+<h2>Algo não está correto ?</h2>
+
+<br />
+
+<p>Caso algo não se encontre correto ou exista alguma dúvida, deve-se dirigir ao departamento de informática.</p>
