@@ -24,13 +24,13 @@
             <label class="control-label col-sm-2">ID do Artigo</label>
             <div class="col-md-10">
 
-                <button type="button" class="btn btn-primary glyphicon glyphicon-search" data-toggle="modal" data-target="#classModal">
-                </button>
+                <button type="button" class="btn btn-primary glyphicon glyphicon-search" data-toggle="modal" data-target="#classModal"></button>
 
-                <span class="id-label">
-                    @Html.DisplayFor(model => model.NecessidadesModel.id_artigo, new { @class = "id-label" })
-                </span>
-                
+                <span class="id-label"></span>
+                <input type="hidden" id="label" name="label" value="" />
+
+
+
                 <div id="classModal" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="classInfo" aria-hidden="true">
                     <div class="modal-dialog modal-lg">
                         <div class="modal-content">
@@ -90,7 +90,7 @@
         <div class="form-group">
             <label class="control-label col-sm-2">Stock Atual</label>
             <div class="col-md-10">
-                @Html.EditorFor(model => model.NecessidadesModel.quantidade_atual, new { htmlAttributes = new { @class = "form-control", @maxlength = "6" } })
+                @Html.EditorFor(model => model.NecessidadesModel.quantidade_atual, new { htmlAttributes = new { @type = "number", @class = "form-control", @maxlength = "8" } })
                 @Html.ValidationMessageFor(model => model.NecessidadesModel.quantidade_atual, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -137,14 +137,18 @@
         var table = $('#example').DataTable();
 
         $('#example tbody').on('dblclick', 'tr', function () {
-            if ($(this).hasClass('selected')) {
-                $(this).removeClass('selected');
-            }
-            else {
+            let $tr = $(this);
+
+            if ($tr.hasClass('selected')) {
+                $tr.removeClass('selected');
+            } else {
                 table.$('tr.selected').removeClass('selected');
-                $(this).addClass('selected');
-                $('.id-label').text($(this).closest('tr').find('td:first').text());
+                $tr.addClass('selected');
                 $('#classModal').modal('hide');
+
+                let targetValue = $tr.find('td:first').text();
+                $('.id-label').text(targetValue);
+                $('#label').val(targetValue);
             }
         });
     });

@@ -22,9 +22,9 @@ namespace GestaoArtigos.Models
         [Required]
         public int id_artigo { get; set; }
 
-        [Display(Name = "Quantidade atual")]
-        [Range(0, 9999999, ErrorMessage = "{0} deve estar contido entre {1} e {2}.")]
         [Required(ErrorMessage = "Introduza a quantidade atual!")]
+        [Display(Name = "A quantidade atual")]
+        [Range(0, 10000, ErrorMessage = "{0} deve estar contido entre {1} e {2}.")]
         public double quantidade_atual { get; set; }
 
         [Required]
@@ -36,9 +36,7 @@ namespace GestaoArtigos.Models
         [Required]
         public System.DateTime data_alterado { get; set; }
 
-        [Required(ErrorMessage = "Introduza o seu número de utilizador!")]
-        [Display(Name = "Número de utilizador")]
-        [Range(1, 9999999, ErrorMessage = "{0} deve estar contido entre {1} e {2}.")]
+        [Required]
         public int id_utilizador { get; set; }
     
         public virtual tb_artigos tb_artigos { get; set; }

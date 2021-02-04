@@ -9,6 +9,8 @@ namespace GestaoArtigos.Controllers
 {
     public class NecessidadesController : Controller
     {
+
+
         // GET: Necessidades/Index
         public ActionResult Index()
         {
@@ -39,31 +41,32 @@ namespace GestaoArtigos.Controllers
             }
         }
 
+
+
         // POST: Necessidades/Create
         [HttpPost]
-        public ActionResult Create(tb_necessidades necessidadeModel, tb_artigos artigoModel)
+        public ActionResult Create(NebluViewModel necessidadeModel, FormCollection collection)
         {
+            int label = Convert.ToInt32(collection["label"]);
+
+            DbModels dbModel = new DbModels();
             try
             {
-                using (DbModels dbModel = new DbModels())
-                {
-                    if (dbModel.tb_necessidades.Any(p => p.id_artigo == artigoModel.id_artigo))
-                    {
-                        ViewBag.ErrorMessage = "O artigo já está listado!";
-                        return View();
-                    }
-                    necessidadeModel.data_criado = DateTime.Now;
-                    necessidadeModel.data_alterado = DateTime.Now;
-                    necessidadeModel.id_utilizador = (int)Session["id_utilizador"];
-                    dbModel.tb_necessidades.Add(necessidadeModel);
-                    dbModel.SaveChanges();
-                }
+                necessidadeModel.NecessidadesModel.id_artigo = label;
+                necessidadeModel.NecessidadesModel.data_criado = DateTime.Now;
+                necessidadeModel.NecessidadesModel.data_alterado = DateTime.Now;
+                necessidadeModel.NecessidadesModel.id_utilizador = (int)Session["id_utilizador"];
+                dbModel.tb_necessidades.Add(necessidadeModel.NecessidadesModel);
+                dbModel.SaveChanges();
 
                 return RedirectToAction("Index");
             }
             catch
             {
-                return View();
+                return View(new NebluViewModel()
+                {
+                    ArtigosModel = dbModel.tb_artigos.ToList()
+                });
             }
         }
 
