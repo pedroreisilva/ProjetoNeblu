@@ -28,7 +28,10 @@
 
                 <span class="id-label"></span>
                 <input type="hidden" id="label" name="label" value="" />
-
+                <br />
+                <div class="text-danger">
+                    @ViewBag.ErrorMessage
+                </div>
 
 
                 <div id="classModal" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="classInfo" aria-hidden="true">
@@ -80,9 +83,7 @@
                     </div>
                 </div>
 
-                <div class="text-danger">
-                    @ViewBag.ErrorMessage
-                </div>
+                
             </div>
 
         </div>
