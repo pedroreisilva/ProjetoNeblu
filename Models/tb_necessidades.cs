@@ -15,19 +15,17 @@ namespace GestaoArtigos.Models
 
     public partial class tb_necessidades
     {
-
         [Required]
         public int id_necessidade { get; set; }
 
         [Required]
         public int id_artigo { get; set; }
 
-        [Required(ErrorMessage = "Introduza a quantidade atual!")]
-        [Display(Name = "A quantidade atual")]
+        [Required(ErrorMessage = "Introduza a quantidade necessária!")]
+        [Display(Name = "A quantidade necessária")]
         [Range(0, 10000, ErrorMessage = "{0} deve estar contido entre {1} e {2}.")]
-        public double quantidade_atual { get; set; }
+        public int quantidade_pedida { get; set; }
 
-        [Required]
         public string estado { get; set; }
 
         [Required]
@@ -38,6 +36,7 @@ namespace GestaoArtigos.Models
 
         [Required]
         public int id_utilizador { get; set; }
+
     
         public virtual tb_artigos tb_artigos { get; set; }
         public virtual tb_utilizadores tb_utilizadores { get; set; }

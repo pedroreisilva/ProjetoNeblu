@@ -19,25 +19,22 @@
 <br />
 
 <table id="example" class="table table-striped table-bordered" style="width:100%">
-    <thead>
+    <thead >
         <tr>
             <th>
                 ID do Artigo
             </th>
             <th>
-                Stock Atual
+                Quantidade Pedida
             </th>
             <th>
                 Estado
             </th>
             <th>
-                Data de criação
+                Data de Criação
             </th>
             <th>
-                Última Alteração
-            </th>
-            <th>
-                Nº do utilizador
+                Nº do Utilizador
             </th>
             <th></th>
         </tr>
@@ -52,7 +49,7 @@
                     @Html.DisplayFor(modelItem => item.id_artigo)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.quantidade_atual)
+                    @Html.DisplayFor(modelItem => item.quantidade_pedida)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.estado)
@@ -61,12 +58,9 @@
                     @Html.DisplayFor(modelItem => item.data_criado)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.data_alterado)
-                </td>
-                <td>
                     @Html.DisplayFor(modelItem => item.id_utilizador)
                 </td>
-                <td>
+                <td style="text-align: center">
                     @Html.ActionLink("Editar", "Edit", new { id = item.id_necessidade }, new { @class = "btn btn-warning" }) |
                     @Html.ActionLink("Detalhes", "Details", new { id = item.id_necessidade }, new { @class = "btn btn-info" }) |
                     @Html.ActionLink("Eliminar", "Delete", new { id = item.id_necessidade }, new { @class = "btn btn-danger" })

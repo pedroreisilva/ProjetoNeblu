@@ -12,6 +12,7 @@
           <Property Name="id_artigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="referencia" Type="varchar" MaxLength="50" />
           <Property Name="descricao" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="quantidade_atual" Type="int" Nullable="false" />
           <Property Name="data_criado" Type="datetime" Precision="0" Nullable="false" />
           <Property Name="data_alterado" Type="datetime" Precision="0" Nullable="false" />
           <Property Name="id_utilizador" Type="int" Nullable="false" />
@@ -22,7 +23,7 @@
           </Key>
           <Property Name="id_necessidade" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="id_artigo" Type="int" Nullable="false" />
-          <Property Name="quantidade_atual" Type="double" Nullable="false" />
+          <Property Name="quantidade_pedida" Type="int" Nullable="false" />
           <Property Name="estado" Type="enum" Nullable="false" />
           <Property Name="data_criado" Type="datetime" Precision="0" Nullable="false" />
           <Property Name="data_alterado" Type="datetime" Precision="0" Nullable="false" />
@@ -105,6 +106,7 @@
           <Property Name="id_artigo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns="http://schemas.microsoft.com/ado/2009/11/edm" />
           <Property Name="referencia" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="descricao" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="quantidade_atual" Type="Int32" Nullable="false" />
           <Property Name="data_criado" Type="DateTime" Nullable="false" />
           <Property Name="data_alterado" Type="DateTime" Nullable="false" />
           <Property Name="id_utilizador" Type="Int32" Nullable="false" />
@@ -134,7 +136,7 @@
           </Key>
           <Property Name="id_necessidade" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns="http://schemas.microsoft.com/ado/2009/11/edm" />
           <Property Name="id_artigo" Type="Int32" Nullable="false" />
-          <Property Name="quantidade_atual" Type="Double" Nullable="false" />
+          <Property Name="quantidade_pedida" Type="Int32" Nullable="false" />
           <Property Name="estado" Type="String" Nullable="false" MaxLength="65532" FixedLength="false" Unicode="false" />
           <Property Name="data_criado" Type="DateTime" Nullable="false" />
           <Property Name="data_alterado" Type="DateTime" Nullable="false" />
@@ -202,6 +204,7 @@
           <EntitySetMapping Name="tb_artigos">
             <EntityTypeMapping TypeName="MvcCrudModel.tb_artigos">
               <MappingFragment StoreEntitySet="tb_artigos">
+                <ScalarProperty Name="quantidade_atual" ColumnName="quantidade_atual" />
                 <ScalarProperty Name="id_utilizador" ColumnName="id_utilizador" />
                 <ScalarProperty Name="id_artigo" ColumnName="id_artigo" />
                 <ScalarProperty Name="referencia" ColumnName="referencia" />
@@ -214,13 +217,13 @@
           <EntitySetMapping Name="tb_necessidades">
             <EntityTypeMapping TypeName="MvcCrudModel.tb_necessidades">
               <MappingFragment StoreEntitySet="tb_necessidades">
+                <ScalarProperty Name="quantidade_pedida" ColumnName="quantidade_pedida" />
                 <ScalarProperty Name="id_utilizador" ColumnName="id_utilizador" />
                 <ScalarProperty Name="id_artigo" ColumnName="id_artigo" />
                 <ScalarProperty Name="id_necessidade" ColumnName="id_necessidade" />
                 <ScalarProperty Name="data_alterado" ColumnName="data_alterado" />
                 <ScalarProperty Name="data_criado" ColumnName="data_criado" />
                 <ScalarProperty Name="estado" ColumnName="estado" />
-                <ScalarProperty Name="quantidade_atual" ColumnName="quantidade_atual" />
                 </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
