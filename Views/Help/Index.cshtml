@@ -1,4 +1,5 @@
 ﻿<link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<link href="~/Content/form.css" rel="stylesheet" type="text/css" />
 <link href="~/Content/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css" />
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -10,8 +11,47 @@
     }
 }
 
-<h2>Algo não está correto ?</h2>
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="contact form example">
+    <title>Contact Form Example</title>
+</head>
 
-<br />
+<body>
 
-<p>Caso algo não se encontre correto ou exista alguma dúvida, deve-se dirigir ao departamento de informática.</p>
+    <div class="container">
+        <h5>Em caso de algum problema ou dúvida, preencha o formulário abaixo.</h5>
+        <br />
+
+        <form class="gform pure-form pure-form-stacked" method="POST" data-email="example@email.net"
+              action="https://script.google.com/macros/s/AKfycbwQkbz_T-Rel0lpJ9kRQwgfgAmI-wFi00OFh_XA/exec">
+
+            <div class="form-elements">
+                <label for="name">Nome</label>
+                <input type="text" id="name" name="name" placeholder="Indique o seu nome..">
+
+                <label for="message">Qual a sua dúvida?</label>
+                <textarea id="message" name="message" placeholder="Escreva aqui a sua dúvida.." style="height:200px"></textarea>
+
+                <input type="submit" value="Submeter">
+
+            </div>
+
+            <div class="thankyou_message" style="display:none;">
+                <h4>
+                    Obrigado por nos contactar!
+                    <br />
+                    Entraremos em contacto brevemente!
+                </h4>
+            </div>
+
+        </form>
+    </div>
+
+    <script data-cfasync="false" src="~/Scripts/form-submission-handler.js"></script>
+
+</body>
+</html>
