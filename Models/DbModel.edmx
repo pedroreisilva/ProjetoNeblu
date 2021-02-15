@@ -23,6 +23,7 @@
           </Key>
           <Property Name="id_necessidade" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="id_artigo" Type="int" Nullable="false" />
+          <Property Name="descricao" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="quantidade_pedida" Type="int" Nullable="false" />
           <Property Name="estado" Type="enum" Nullable="false" />
           <Property Name="data_criado" Type="datetime" Precision="0" Nullable="false" />
@@ -136,6 +137,7 @@
           </Key>
           <Property Name="id_necessidade" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns="http://schemas.microsoft.com/ado/2009/11/edm" />
           <Property Name="id_artigo" Type="Int32" Nullable="false" />
+          <Property Name="descricao" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="quantidade_pedida" Type="Int32" Nullable="false" />
           <Property Name="estado" Type="String" Nullable="false" MaxLength="65532" FixedLength="false" Unicode="false" />
           <Property Name="data_criado" Type="DateTime" Nullable="false" />
@@ -217,6 +219,7 @@
           <EntitySetMapping Name="tb_necessidades">
             <EntityTypeMapping TypeName="MvcCrudModel.tb_necessidades">
               <MappingFragment StoreEntitySet="tb_necessidades">
+                <ScalarProperty Name="descricao" ColumnName="descricao" />
                 <ScalarProperty Name="quantidade_pedida" ColumnName="quantidade_pedida" />
                 <ScalarProperty Name="id_utilizador" ColumnName="id_utilizador" />
                 <ScalarProperty Name="id_artigo" ColumnName="id_artigo" />

@@ -16,102 +16,105 @@
 {
     @Html.AntiForgeryToken()
 
-    <div class="form-horizontal">
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+<div class="form-horizontal">
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-        <div class="form-group">
-            <label class="control-label col-sm-2">ID do Artigo</label>
-            <div class="col-md-10">
+    <div class="form-group">
+        <label class="control-label col-sm-2">ID do Artigo</label>
+        <div class="col-md-10">
 
-                <button type="button" class="btn btn-primary glyphicon glyphicon-search" data-toggle="modal" data-target="#classModal"></button>
+            <button type="button" class="btn btn-primary glyphicon glyphicon-search" data-toggle="modal" data-target="#classModal"></button>
 
-                <span class="id-label"></span>
-                <input type="hidden" id="label" name="label" value="" />
-                <br />
-                <div class="text-danger">
-                    @ViewBag.ErrorMessage
-                </div>
-
-
-                <div id="classModal" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="classInfo" aria-hidden="true">
-                    <div class="modal-dialog modal-lg">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                                    ×
-                                </button>
-                                <h4 class="modal-title" id="classModalLabel">
-                                </h4>
-                            </div>
-                            <div class="modal-body">
-
-                                <table id="example" class="display" style="width:100%">
-                                    <thead>
+            <span class="id-label"></span>
+            <input type="hidden" id="label" name="label" value="" />
+            <br />
+            <div class="text-danger">
+                @ViewBag.ErrorMessage
+            </div>
+            <div id="classModal" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="classInfo" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                ×
+                            </button>
+                            <h4 class="modal-title" id="classModalLabel">
+                            </h4>
+                        </div>
+                        <div class="modal-body">
+                            <table id="example" class="display" style="width:100%">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            ID
+                                        </th>
+                                        <th>
+                                            Referência
+                                        </th>
+                                        <th>
+                                            Descrição
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model.ArtigosModel)
+                                    {
                                         <tr>
-                                            <th>
-                                                ID
-                                            </th>
-                                            <th>
-                                                Referência
-                                            </th>
-                                            <th>
-                                                Descrição
-                                            </th>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.id_artigo)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.referencia)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.descricao)
+                                            </td>
                                         </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach (var item in Model.ArtigosModel)
-                                        {
-                                            <tr>
-                                                <td>
-                                                    @Html.DisplayFor(modelItem => item.id_artigo)
-                                                </td>
-                                                <td>
-                                                    @Html.DisplayFor(modelItem => item.referencia)
-                                                </td>
-                                                <td>
-                                                    @Html.DisplayFor(modelItem => item.descricao)
-                                                </td>
-                                            </tr>
-                                        }
-                                    </tbody>
-                                </table>
-
-                            </div>
+                                    }
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
-
-                
-            </div>
-
-        </div>
-
-        <div class="form-group">
-            <label class="control-label col-sm-2">Quantidade Pedida</label>
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.NecessidadesModel.quantidade_pedida, new { htmlAttributes = new { @type = "number", @class = "form-control", @maxlength = "8" } })
-                @Html.ValidationMessageFor(model => model.NecessidadesModel.quantidade_pedida, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label class="control-label col-sm-2">Estado</label>
-            <div class="col-md-10">
-                @Html.DropDownListFor(model => model.NecessidadesModel.estado, new SelectList(Enum.GetValues(typeof(Estado))), new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.NecessidadesModel.estado, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Adicionar" class="btn btn-warning" onclick="this.disabled=true;this.form.submit();" /> |
-                <a class="btn btn-primary" href="/Necessidades">Voltar à lista</a>
             </div>
         </div>
     </div>
+
+    <div class="form-group">
+        <label class="control-label col-sm-2">Descrição do Artigo</label>
+        <div class="col-md-10">
+            @Html.ValidationMessageFor(model => model.NecessidadesModel.descricao, "", new { @class = "text-danger" })
+            <span class="id-labelD"></span>
+            <input type="hidden" id="labelD" name="labelD" value="" />
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <label class="control-label col-sm-2">Quantidade Pedida</label>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.NecessidadesModel.quantidade_pedida, new { htmlAttributes = new { @type = "number", @class = "form-control", @maxlength = "8" } })
+            @Html.ValidationMessageFor(model => model.NecessidadesModel.quantidade_pedida, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-sm-2">Estado</label>
+        <div class="col-md-10">
+            @Html.DropDownListFor(model => model.NecessidadesModel.estado, new SelectList(Enum.GetValues(typeof(Estado))), new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.NecessidadesModel.estado, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Adicionar" class="btn btn-warning" onclick="this.disabled=true;this.form.submit();" /> |
+            <a class="btn btn-primary" href="/Necessidades">Voltar à lista</a>
+        </div>
+    </div>
+</div>
 
 }
 
@@ -148,8 +151,13 @@
                 $('#classModal').modal('hide');
 
                 let targetValue = $tr.find('td:first').text();
+                let targetDesc = $tr.find('td:nth-child(3)').text();
+
                 $('.id-label').text(targetValue);
                 $('#label').val(targetValue);
+
+                $('.id-labelD').text(targetDesc);
+                $('#labelD').val(targetDesc);
             }
         });
     });

@@ -21,11 +21,15 @@ namespace GestaoArtigos.Models
         [Required]
         public int id_artigo { get; set; }
 
+
+        public string descricao { get; set; }
+
         [Required(ErrorMessage = "Introduza a quantidade necessária!")]
         [Display(Name = "A quantidade necessária")]
-        [Range(0, 10000, ErrorMessage = "{0} deve estar contido entre {1} e {2}.")]
+        [Range(1, 10000, ErrorMessage = "{0} deve estar contido entre {1} e {2}.")]
         public int quantidade_pedida { get; set; }
 
+        [Required]
         public string estado { get; set; }
 
         [Required]

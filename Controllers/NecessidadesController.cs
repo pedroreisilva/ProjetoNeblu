@@ -47,17 +47,18 @@ namespace GestaoArtigos.Controllers
         [HttpPost]
         public ActionResult Create(NebluViewModel necessidadeModel, FormCollection collection)
         {
-            String label = collection["label"];
+
+
+            if (string.IsNullOrEmpty(collection["label"]))
+            {
+                ViewBag.ErrorMessage = " Selecione o artigo!";
+            }
 
             DbModels dbModel = new DbModels();
             try
             {
-                if (string.IsNullOrEmpty(label))
-                {
-                    ViewBag.ErrorMessage = " Selecione o artigo!";
-                }
-
-                necessidadeModel.NecessidadesModel.id_artigo = int.Parse(label);
+                necessidadeModel.NecessidadesModel.id_artigo = int.Parse(collection["label"]);
+                necessidadeModel.NecessidadesModel.descricao = collection["labelD"];
                 necessidadeModel.NecessidadesModel.data_criado = DateTime.Now;
                 necessidadeModel.NecessidadesModel.data_alterado = DateTime.Now;
                 necessidadeModel.NecessidadesModel.id_utilizador = (int)Session["id_utilizador"];
